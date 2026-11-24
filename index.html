@@ -3,857 +3,206 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Monarca Assurance & Patrimoine — Courtier ORIAS, Simulateur & Conseil</title>
+  <title>Monarca Assurance &amp; Patrimoine — Neuilly-sur-Seine</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            serif: ['"Cormorant Garamond"', 'serif'],
-          },
-          colors: {
-            navy: {
-              950: '#071124',
-              900: '#0D1E3A',
-              800: '#162F56',
-            },
-            gold: {
-              400: '#D4B06A',
-              500: '#C5A059',
-              600: '#A6823E',
-            }
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    .view-section { display: none; animation: fadeIn 0.28s ease-out; }
-    .view-section.active { display: block; }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    input[type="range"] { cursor: pointer; }
-  </style>
 </head>
-<body class="bg-slate-50 text-slate-900 font-sans antialiased flex flex-col min-h-screen">
+<body class="bg-slate-50 text-slate-900 font-sans antialiased">
 
-  <!-- BARRE DE NAVIGATION -->
-  <header class="bg-white/95 backdrop-blur border-b border-slate-200 sticky top-0 z-40">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center gap-4">
-      
+  <!-- EN-TÊTE -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-3.5 flex flex-wrap justify-between items-center gap-3">
       <!-- Logo -->
-      <button type="button" onclick="navigateTo('accueil')" class="flex items-center gap-3 text-left group shrink-0">
-        <div class="w-10 h-10 bg-navy-900 border border-gold-500/40 rounded-lg flex items-center justify-center text-gold-400 font-serif font-bold text-2xl shadow-sm group-hover:bg-navy-800 transition">
-          M
-        </div>
+      <button type="button" data-nav="accueil" class="flex items-center gap-2.5 text-left focus:outline-none">
+        <div class="w-10 h-10 bg-blue-950 rounded-lg flex items-center justify-center text-amber-400 font-serif font-bold text-xl shadow">M</div>
         <div>
-          <span class="block font-bold text-lg sm:text-xl tracking-tight text-navy-950 leading-none">
+          <span class="font-bold text-lg tracking-tight text-blue-950 block leading-none">
             Monarca <span class="text-emerald-600">Assurance</span>
           </span>
-          <span class="block text-[10px] uppercase tracking-[0.18em] text-slate-500 font-semibold mt-1" data-i18n="brand_sub">
-            & Ingénierie Patrimoniale
-          </span>
+          <span class="text-[11px] text-slate-500 font-medium tracking-wide uppercase" data-i18n="tagline">&amp; Patrimoine • Neuilly-sur-Seine</span>
         </div>
       </button>
 
-      <!-- Navigation Desktop -->
-      <nav class="hidden lg:flex items-center gap-6">
-        <button type="button" onclick="navigateTo('accueil')" data-nav="accueil" data-i18n="nav_sim"
-          class="nav-btn text-sm font-semibold text-navy-900 border-b-2 border-navy-900 py-1 transition">
-          Simulateur & Accueil
-        </button>
-        <button type="button" onclick="navigateTo('apropos')" data-nav="apropos" data-i18n="nav_about"
-          class="nav-btn text-sm font-medium text-slate-600 hover:text-navy-900 py-1 border-b-2 border-transparent transition">
-          Qui Sommes-Nous ?
-        </button>
-        <button type="button" onclick="navigateTo('services')" data-nav="services" data-i18n="nav_services"
-          class="nav-btn text-sm font-medium text-slate-600 hover:text-navy-900 py-1 border-b-2 border-transparent transition">
-          Nos Services
-        </button>
-        <button type="button" onclick="navigateTo('projet')" data-nav="projet" data-i18n="nav_project"
-          class="nav-btn text-sm font-medium text-slate-600 hover:text-navy-900 py-1 border-b-2 border-transparent transition">
-          Votre Projet
-        </button>
+      <!-- Navigation principale -->
+      <nav class="hidden md:flex items-center gap-1">
+        <button type="button" data-nav="accueil" class="nav-btn px-3.5 py-2 rounded-lg text-sm font-semibold text-blue-950 bg-slate-100 transition" data-i18n="nav_home">Simulateur</button>
+        <button type="button" data-nav="about" class="nav-btn px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-blue-950 hover:bg-slate-50 transition" data-i18n="nav_about">Qui Sommes-Nous ?</button>
+        <button type="button" data-nav="services" class="nav-btn px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-blue-950 hover:bg-slate-50 transition" data-i18n="nav_services">Nos Services</button>
+        <button type="button" data-nav="projet" class="nav-btn px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-blue-950 hover:bg-slate-50 transition" data-i18n="nav_project">Votre Projet</button>
       </nav>
 
-      <!-- Sélecteur de langue + CTA -->
-      <div class="hidden sm:flex items-center gap-3">
-        <!-- Boutons de langue FR / ES / EN -->
-        <div class="inline-flex items-center bg-slate-100 border border-slate-200 rounded-lg p-0.5 text-xs font-bold" role="group" aria-label="Sélecteur de langue">
-          <button type="button" onclick="setLanguage('fr')" data-lang="fr"
-            class="lang-btn px-2.5 py-1.5 rounded-md bg-navy-900 text-white transition">FR</button>
-          <button type="button" onclick="setLanguage('es')" data-lang="es"
-            class="lang-btn px-2.5 py-1.5 rounded-md text-slate-600 hover:text-navy-900 transition">ES</button>
-          <button type="button" onclick="setLanguage('en')" data-lang="en"
-            class="lang-btn px-2.5 py-1.5 rounded-md text-slate-600 hover:text-navy-900 transition">EN</button>
+      <!-- Sélecteur Langue + Bouton CTA -->
+      <div class="flex items-center gap-2.5">
+        <div class="flex items-center bg-slate-100 p-1 rounded-lg border border-slate-200 text-xs font-bold">
+          <button type="button" data-lang="fr" class="lang-btn px-2 py-1 rounded bg-white text-blue-950 shadow-sm transition">FR</button>
+          <button type="button" data-lang="es" class="lang-btn px-2 py-1 rounded text-slate-500 hover:text-blue-950 transition">ES</button>
+          <button type="button" data-lang="en" class="lang-btn px-2 py-1 rounded text-slate-500 hover:text-blue-950 transition">EN</button>
         </div>
-
-        <button type="button" onclick="navigateTo('projet')" data-i18n="nav_cta"
-          class="bg-navy-900 hover:bg-navy-800 text-white text-sm font-semibold px-4 py-2.5 rounded-lg transition shadow-sm">
+        <button type="button" data-nav="projet" class="hidden sm:inline-block bg-blue-950 hover:bg-blue-900 text-white text-xs md:text-sm font-semibold px-4 py-2.5 rounded-lg transition shadow-sm" data-i18n="cta_header">
           Étude gratuite
         </button>
       </div>
-
-      <!-- Bouton Menu Mobile -->
-      <div class="flex items-center gap-2 lg:hidden">
-        <div class="inline-flex sm:hidden items-center bg-slate-100 border border-slate-200 rounded-lg p-0.5 text-[11px] font-bold">
-          <button type="button" onclick="setLanguage('fr')" data-lang="fr" class="lang-btn px-2 py-1 rounded bg-navy-900 text-white">FR</button>
-          <button type="button" onclick="setLanguage('es')" data-lang="es" class="lang-btn px-2 py-1 rounded text-slate-600">ES</button>
-          <button type="button" onclick="setLanguage('en')" data-lang="en" class="lang-btn px-2 py-1 rounded text-slate-600">EN</button>
-        </div>
-        <button type="button" onclick="toggleMobileMenu()" aria-label="Menu" class="p-2 rounded-lg text-slate-700 hover:bg-slate-100">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-        </button>
-      </div>
     </div>
 
-    <!-- Menu Mobile Déroulant -->
-    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-200 px-4 py-4 space-y-2 shadow-lg">
-      <button type="button" onclick="navigateTo('accueil'); toggleMobileMenu()" data-i18n="nav_sim" class="block w-full text-left px-3 py-2.5 rounded-lg font-semibold text-navy-900 bg-slate-50">Simulateur & Accueil</button>
-      <button type="button" onclick="navigateTo('apropos'); toggleMobileMenu()" data-i18n="nav_about" class="block w-full text-left px-3 py-2.5 rounded-lg font-medium text-slate-700 hover:bg-slate-50">Qui Sommes-Nous ?</button>
-      <button type="button" onclick="navigateTo('services'); toggleMobileMenu()" data-i18n="nav_services" class="block w-full text-left px-3 py-2.5 rounded-lg font-medium text-slate-700 hover:bg-slate-50">Nos Services</button>
-      <button type="button" onclick="navigateTo('projet'); toggleMobileMenu()" data-i18n="nav_project" class="block w-full text-left px-3 py-2.5 rounded-lg font-medium text-slate-700 hover:bg-slate-50">Votre Projet & Contact</button>
+    <!-- Menu Mobile -->
+    <div class="md:hidden border-t border-slate-100 bg-slate-50 px-2 py-2 flex justify-around text-xs font-semibold">
+      <button type="button" data-nav="accueil" class="nav-btn px-2.5 py-1.5 rounded text-blue-950 bg-white shadow-sm" data-i18n="nav_home">Simulateur</button>
+      <button type="button" data-nav="about" class="nav-btn px-2.5 py-1.5 rounded text-slate-600" data-i18n="nav_about">Qui Sommes-Nous ?</button>
+      <button type="button" data-nav="services" class="nav-btn px-2.5 py-1.5 rounded text-slate-600" data-i18n="nav_services">Nos Services</button>
+      <button type="button" data-nav="projet" class="nav-btn px-2.5 py-1.5 rounded text-slate-600" data-i18n="nav_project">Votre Projet</button>
     </div>
   </header>
 
-  <main class="flex-grow">
+  <!-- ==================== VUE 1 : ACCUEIL & SIMULATEUR ==================== -->
+  <section id="view-accueil" class="page-view max-w-6xl mx-auto px-4 py-10 md:py-16">
+    <div class="grid lg:grid-cols-12 gap-10 items-start">
 
-    <!-- =========================================================
-         1. VUE ACCUEIL & SIMULATEUR DE FINANCEMENT / ASSURANCE
-         ========================================================= -->
-    <section id="view-accueil" class="view-section active">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div class="grid lg:grid-cols-12 gap-10 items-start">
+      <!-- Colonne gauche : Argumentaire -->
+      <div class="lg:col-span-5 space-y-6">
+        <span class="inline-block bg-emerald-100 text-emerald-800 text-xs font-semibold px-3 py-1 rounded-full" data-i18n="badge_orias">
+          Courtier indépendant • ORIAS n° 24006933
+        </span>
+        <h1 class="text-3xl md:text-4xl font-extrabold text-slate-950 leading-tight" data-i18n="hero_title">
+          Optimisez votre <span class="text-blue-900">prêt immobilier</span>, vos <span class="text-emerald-600">assurances</span> et vos <span class="text-amber-600">projets travaux</span>.
+        </h1>
+        <p class="text-slate-600 text-base leading-relaxed" data-i18n="hero_desc">
+          Simulez instantanément vos mensualités ou vos économies grâce à la loi Lemoine. Notre cabinet à Neuilly-sur-Seine vous accompagne également sur vos assurances particuliers &amp; pros, vos crédits travaux et dossiers MaPrimeRénov'.
+        </p>
+        <ul class="space-y-3 text-sm text-slate-700">
+          <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">✓</span> <span data-i18n="hero_b1">Simulation immédiate, gratuite et sans engagement</span></li>
+          <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">✓</span> <span data-i18n="hero_b2">Changement d'assurance emprunteur à tout moment (Loi Lemoine)</span></li>
+          <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">✓</span> <span data-i18n="hero_b3">Financement travaux, aides MaPrimeRénov' &amp; assurances sur-mesure</span></li>
+        </ul>
+        <div class="pt-2 flex flex-wrap gap-3">
+          <button type="button" data-nav="services" class="bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold px-4 py-2.5 rounded-lg transition" data-i18n="btn_discover_services">
+            Découvrir tous nos services →
+          </button>
+          <button type="button" data-nav="about" class="bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 text-sm font-semibold px-4 py-2.5 rounded-lg transition" data-i18n="btn_discover_about">
+            Le cabinet
+          </button>
+        </div>
+      </div>
 
-          <!-- Colonne gauche : Argumentaire & Piliers -->
-          <div class="lg:col-span-5 space-y-6">
-            <div class="flex flex-wrap items-center gap-2">
-              <span class="inline-block bg-emerald-100 text-emerald-800 text-xs font-semibold px-3 py-1 rounded-full" data-i18n="badge_orias">
-                Courtier indépendant • ORIAS n° 24006933
-              </span>
-              <span class="inline-block bg-amber-50 border border-gold-500/30 text-amber-900 text-xs font-semibold px-3 py-1 rounded-full">
-                « Un Mundo Sin Fronteras »
-              </span>
-            </div>
-
-            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-950 leading-tight" data-i18n="hero_title">
-              Optimisez votre <span class="text-navy-900">prêt immobilier</span> et divisez le coût de votre <span class="text-emerald-600">assurance</span>.
-            </h1>
-
-            <p class="text-slate-600 text-base leading-relaxed" data-i18n="hero_desc">
-              Simulez instantanément vos mensualités ou vos économies grâce à la loi Lemoine. Notre cabinet basé à Neuilly-sur-Seine vous accompagne également sur vos assurances particuliers/professionnels, crédits travaux, dossiers MaPrimeRénov' et stratégies patrimoniales.
-            </p>
-
-            <ul class="space-y-3 text-sm text-slate-700">
-              <li class="flex items-center gap-2.5">
-                <span class="text-emerald-600 font-bold">✓</span>
-                <span data-i18n="hero_b1">Simulation immédiate, gratuite et sans engagement</span>
-              </li>
-              <li class="flex items-center gap-2.5">
-                <span class="text-emerald-600 font-bold">✓</span>
-                <span data-i18n="hero_b2">Changement d'assurance emprunteur à tout moment (Loi Lemoine)</span>
-              </li>
-              <li class="flex items-center gap-2.5">
-                <span class="text-emerald-600 font-bold">✓</span>
-                <span data-i18n="hero_b3">Financement travaux, accompagnement MaPrimeRénov' & assurances pro/perso</span>
-              </li>
-              <li class="flex items-center gap-2.5">
-                <span class="text-emerald-600 font-bold">✓</span>
-                <span data-i18n="hero_b4">Un conseiller Monarca vous rappelle sous 24h ouvrées</span>
-              </li>
-            </ul>
-
-            <!-- Raccourcis vers les autres pages -->
-            <div class="pt-2 flex flex-wrap gap-3">
-              <button type="button" onclick="navigateTo('services')" data-i18n="hero_btn_services"
-                class="bg-white hover:bg-slate-100 text-navy-900 border border-slate-300 text-sm font-semibold px-4 py-2.5 rounded-lg transition">
-                Découvrir tous nos services →
-              </button>
-              <button type="button" onclick="navigateTo('apropos')" data-i18n="hero_btn_about"
-                class="text-sm font-semibold text-slate-600 hover:text-navy-900 px-3 py-2.5 transition">
-                Qui sommes-nous ?
-              </button>
-            </div>
-          </div>
-
-          <!-- Colonne droite : Simulateur + Formulaire Web3Forms -->
-          <div id="simulateur" class="lg:col-span-7 bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
-            
-            <!-- Onglets du simulateur -->
-            <div class="grid grid-cols-2 border-b border-slate-200 bg-slate-100">
-              <button id="tab-pret" type="button" onclick="switchTab('pret')" data-i18n="sim_tab_loan"
-                class="py-4 px-2 text-xs sm:text-sm font-bold bg-white text-navy-900 border-b-2 border-navy-900 transition">
-                Simulateur Prêt Immobilier
-              </button>
-              <button id="tab-assurance" type="button" onclick="switchTab('assurance')" data-i18n="sim_tab_ins"
-                class="py-4 px-2 text-xs sm:text-sm font-bold text-slate-500 hover:text-slate-800 transition">
-                Économie Assurance (Lemoine)
-              </button>
-            </div>
-
-            <div class="p-6 md:p-8 space-y-6">
-
-              <!-- BLOC SIMULATEUR PRET -->
-              <div id="panel-pret" class="space-y-5">
-                <div>
-                  <div class="flex justify-between text-sm font-medium mb-1">
-                    <span data-i18n="sim_amount">Montant à emprunter</span>
-                    <span id="label-montant" class="font-bold text-navy-900">250 000 €</span>
-                  </div>
-                  <input id="input-montant" type="range" min="50000" max="1000000" step="5000" value="250000" oninput="calculerPret()" class="w-full accent-navy-900" />
-                </div>
-
-                <div>
-                  <div class="flex justify-between text-sm font-medium mb-1">
-                    <span data-i18n="sim_duration">Durée du prêt</span>
-                    <span id="label-duree" class="font-bold text-navy-900">20 ans</span>
-                  </div>
-                  <input id="input-duree" type="range" min="7" max="25" step="1" value="20" oninput="calculerPret()" class="w-full accent-navy-900" />
-                </div>
-
-                <div>
-                  <div class="flex justify-between text-sm font-medium mb-1">
-                    <span data-i18n="sim_rate">Taux nominal estimé</span>
-                    <span id="label-taux" class="font-bold text-navy-900">3,40 %</span>
-                  </div>
-                  <input id="input-taux" type="range" min="2.0" max="5.5" step="0.05" value="3.4" oninput="calculerPret()" class="w-full accent-navy-900" />
-                </div>
-
-                <div class="bg-blue-50 border border-blue-100 rounded-xl p-4 flex flex-wrap justify-between items-center gap-4">
-                  <div>
-                    <p class="text-xs text-navy-800 uppercase font-semibold" data-i18n="sim_monthly_label">Mensualité estimée (hors ass.)</p>
-                    <p class="text-3xl font-extrabold text-navy-950">
-                      <span id="res-mensualite">1 437</span> € <span class="text-sm font-normal" data-i18n="sim_per_month">/ mois</span>
-                    </p>
-                  </div>
-                  <div class="text-right">
-                    <p class="text-xs text-slate-500" data-i18n="sim_interest_label">Coût total des intérêts</p>
-                    <p id="res-interets" class="text-base font-bold text-slate-800">94 975 €</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- BLOC SIMULATEUR ASSURANCE -->
-              <div id="panel-assurance" class="space-y-5 hidden">
-                <div>
-                  <div class="flex justify-between text-sm font-medium mb-1">
-                    <span data-i18n="sim_capital">Capital restant dû</span>
-                    <span id="label-capital" class="font-bold text-emerald-700">200 000 €</span>
-                  </div>
-                  <input id="input-capital" type="range" min="30000" max="800000" step="5000" value="200000" oninput="calculerAssurance()" class="w-full accent-emerald-600" />
-                </div>
-
-                <div class="grid grid-cols-2 gap-4">
-                  <div>
-                    <label class="block text-xs font-medium text-slate-600 mb-1" data-i18n="sim_rem_years">Durée restante (ans)</label>
-                    <input id="input-duree-restante" type="number" min="2" max="25" value="15" oninput="calculerAssurance()" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm" />
-                  </div>
-                  <div>
-                    <label class="block text-xs font-medium text-slate-600 mb-1" data-i18n="sim_age">Votre âge</label>
-                    <input id="input-age" type="number" min="18" max="75" value="35" oninput="calculerAssurance()" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm" />
-                  </div>
-                </div>
-
-                <div class="flex items-center gap-3">
-                  <input id="input-fumeur" type="checkbox" onchange="calculerAssurance()" class="w-4 h-4 accent-emerald-600" />
-                  <label for="input-fumeur" class="text-sm text-slate-700" data-i18n="sim_smoker">Assuré fumeur (ou vapoteur)</label>
-                </div>
-
-                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4 flex flex-wrap justify-between items-center gap-4">
-                  <div>
-                    <p class="text-xs text-emerald-800 uppercase font-semibold" data-i18n="sim_savings_label">Économie globale estimée</p>
-                    <p id="res-economie" class="text-3xl font-extrabold text-emerald-900">6 300 €</p>
-                  </div>
-                  <div class="text-right">
-                    <p class="text-xs text-emerald-700" data-i18n="sim_approx">Soit environ</p>
-                    <p id="res-economie-mois" class="text-base font-bold text-emerald-900">-35 € / mois</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- FORMULAIRE ENVOI PAR EMAIL (Web3Forms) -->
-              <div class="pt-4 border-t border-slate-200">
-                <div id="success-message" class="hidden bg-navy-950 text-white p-5 rounded-xl text-center space-y-2">
-                  <p class="font-bold text-lg text-emerald-400" data-i18n="lead_ok_title">Demande envoyée avec succès !</p>
-                  <p class="text-sm text-slate-300" data-i18n="lead_ok_desc">Votre simulation a été transmise à Monarca Assurance. Vous recevrez votre étude détaillée par email et serez recontacté sous 24h.</p>
-                </div>
-
-                <form id="lead-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-3">
-                  <input type="hidden" name="access_key" value="d78c7717-8d76-40f9-a88e-d283d474ec29" />
-                  <input type="hidden" name="subject" id="email-subject" value="Nouveau prospect - Prêt Immobilier" />
-                  <input type="hidden" name="from_name" value="Simulateur Monarca Assurance" />
-                  <input type="hidden" name="Detail_Simulation" id="hidden-simulation-summary" value="" />
-
-                  <p class="text-sm font-bold text-slate-800" data-i18n="lead_title">
-                    Recevoir cette simulation détaillée + les meilleurs taux négociés :
-                  </p>
-
-                  <div class="grid sm:grid-cols-3 gap-3">
-                    <input type="text" name="Nom_Prospect" required data-i18n-ph="ph_name" placeholder="Nom & Prénom"
-                      class="border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-navy-900" />
-                    <input type="email" name="Email_Prospect" required data-i18n-ph="ph_email" placeholder="Email"
-                      class="border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-navy-900" />
-                    <input type="tel" name="Telephone_Prospect" required data-i18n-ph="ph_phone" placeholder="Téléphone"
-                      class="border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-navy-900" />
-                  </div>
-
-                  <label class="flex items-start gap-2 text-xs text-slate-500 pt-1">
-                    <input type="checkbox" name="Consentement_RGPD" value="Oui" required class="mt-0.5 accent-navy-900" />
-                    <span data-i18n="lead_rgpd">J’accepte que mes données soient traitées par Monarca Assurance pour réaliser mon étude financière et être recontacté, conformément à la politique de confidentialité (RGPD).</span>
-                  </label>
-
-                  <button id="submit-btn" type="submit" data-i18n="lead_submit"
-                    class="w-full bg-navy-900 hover:bg-navy-800 text-white font-bold py-3 rounded-lg transition shadow-md">
-                    Recevoir mon étude personnalisée gratuite
-                  </button>
-                </form>
-              </div>
-
-            </div>
-          </div>
+      <!-- Colonne droite : Simulateur + Formulaire Email -->
+      <div class="lg:col-span-7 bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+        
+        <!-- Onglets Simulateur -->
+        <div class="grid grid-cols-2 border-b border-slate-200 bg-slate-100">
+          <button id="tab-pret" type="button" class="py-4 text-xs sm:text-sm font-bold bg-white text-blue-900 border-b-2 border-blue-900 transition" data-i18n="sim_tab_loan">
+            Simulateur Prêt Immobilier
+          </button>
+          <button id="tab-assurance" type="button" class="py-4 text-xs sm:text-sm font-bold text-slate-500 hover:text-slate-800 transition" data-i18n="sim_tab_ins">
+            Économie Assurance (Lemoine)
+          </button>
         </div>
 
-        <!-- Bandeau Aperçu Rapide de nos 3 Expertises -->
-        <div class="mt-16 pt-12 border-t border-slate-200">
-          <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
+        <div class="p-6 md:p-8 space-y-6">
+
+          <!-- BLOC SIMULATEUR PRET -->
+          <div id="panel-pret" class="space-y-5">
             <div>
-              <span class="text-xs font-bold uppercase tracking-wider text-gold-600" data-i18n="home_exp_kicker">Accompagnement 360°</span>
-              <h2 class="text-2xl md:text-3xl font-extrabold text-navy-950 mt-1" data-i18n="home_exp_title">Au-delà du prêt immobilier : nos domaines d'intervention</h2>
-            </div>
-            <button type="button" onclick="navigateTo('services')" data-i18n="home_exp_link" class="text-sm font-bold text-navy-900 hover:text-emerald-700 transition">
-              Voir le détail des services →
-            </button>
-          </div>
-
-          <div class="grid md:grid-cols-3 gap-6">
-            <div onclick="openServiceTab('assurances')" class="cursor-pointer bg-white p-6 rounded-2xl border border-slate-200 hover:border-navy-900/40 hover:shadow-md transition">
-              <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold mb-4">01</div>
-              <h3 class="font-bold text-lg text-navy-950 mb-2" data-i18n="card1_t">Assurances Particuliers & Professionnels</h3>
-              <p class="text-sm text-slate-600 leading-relaxed" data-i18n="card1_d">Assurance emprunteur, habitation, santé, auto/moto pour les particuliers ; RC Pro, décennale, multirisque et prévoyance dirigeant pour les entreprises.</p>
+              <div class="flex justify-between text-sm font-medium mb-1">
+                <span data-i18n="sim_amount">Montant à emprunter</span>
+                <span id="label-montant" class="font-bold text-blue-900">250 000 €</span>
+              </div>
+              <input id="input-montant" type="range" min="50000" max="1000000" step="5000" value="250000" class="w-full accent-blue-900" />
             </div>
 
-            <div onclick="openServiceTab('travaux')" class="cursor-pointer bg-white p-6 rounded-2xl border border-slate-200 hover:border-navy-900/40 hover:shadow-md transition">
-              <div class="w-10 h-10 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold mb-4">02</div>
-              <h3 class="font-bold text-lg text-navy-950 mb-2" data-i18n="card2_t">Crédits Travaux & MaPrimeRénov'</h3>
-              <p class="text-sm text-slate-600 leading-relaxed" data-i18n="card2_d">Obtention de financements travaux, Éco-PTZ et accompagnement complet pour sécuriser vos subventions MaPrimeRénov' et primes CEE.</p>
+            <div>
+              <div class="flex justify-between text-sm font-medium mb-1">
+                <span data-i18n="sim_duration">Durée du prêt</span>
+                <span id="label-duree" class="font-bold text-blue-900">20 ans</span>
+              </div>
+              <input id="input-duree" type="range" min="7" max="25" step="1" value="20" class="w-full accent-blue-900" />
             </div>
 
-            <div onclick="openServiceTab('patrimoine')" class="cursor-pointer bg-white p-6 rounded-2xl border border-slate-200 hover:border-navy-900/40 hover:shadow-md transition">
-              <div class="w-10 h-10 rounded-lg bg-blue-50 text-navy-900 flex items-center justify-center font-bold mb-4">03</div>
-              <h3 class="font-bold text-lg text-navy-950 mb-2" data-i18n="card3_t">Ingénierie Patrimoniale & Expatriés</h3>
-              <p class="text-sm text-slate-600 leading-relaxed" data-i18n="card3_d">Structuration fiscale, holding, Pacte Dutreil, gestion d'actifs et solutions transfrontalières (assurance-vie luxembourgeoise multi-devises).</p>
+            <div>
+              <div class="flex justify-between text-sm font-medium mb-1">
+                <span data-i18n="sim_rate">Taux nominal estimé</span>
+                <span id="label-taux" class="font-bold text-blue-900">3,40 %</span>
+              </div>
+              <input id="input-taux" type="range" min="2.0" max="5.5" step="0.05" value="3.4" class="w-full accent-blue-900" />
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- =========================================================
-         2. VUE QUI SOMMES-NOUS ?
-         ========================================================= -->
-    <section id="view-apropos" class="view-section">
-      <div class="bg-navy-950 text-white py-16 px-4">
-        <div class="max-w-6xl mx-auto">
-          <span class="inline-block bg-gold-500/20 text-gold-400 border border-gold-500/30 text-xs font-semibold px-3 py-1 rounded-full mb-4" data-i18n="about_badge">
-            Cabinet Indépendant • Neuilly-sur-Seine & International
-          </span>
-          <h1 class="text-3xl md:text-5xl font-serif font-bold text-white leading-tight max-w-3xl" data-i18n="about_title">
-            Protéger, financer et structurer vos projets « Sin Fronteras ».
-          </h1>
-          <p class="text-slate-300 mt-4 max-w-2xl text-base leading-relaxed" data-i18n="about_intro">
-            Implanté au 99 Avenue Achille Peretti à Neuilly-sur-Seine (92200), Monarca réunit le courtage en financement et assurances (ORIAS n° 24006933) et le conseil en ingénierie patrimoniale en architecture ouverte.
-          </p>
-        </div>
-      </div>
-
-      <div class="max-w-6xl mx-auto px-4 py-14 space-y-14">
-        <!-- 3 Valeurs -->
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="bg-white p-7 rounded-2xl border border-slate-200 shadow-sm">
-            <h3 class="font-bold text-lg text-navy-950 mb-2" data-i18n="val1_t">100 % Indépendant</h3>
-            <p class="text-sm text-slate-600 leading-relaxed" data-i18n="val1_d">Libres de tout réseau bancaire ou compagnie captive, nous mettons en concurrence l'ensemble des banques, assureurs et partenaires financiers pour défendre uniquement vos intérêts.</p>
-          </div>
-          <div class="bg-white p-7 rounded-2xl border border-slate-200 shadow-sm">
-            <h3 class="font-bold text-lg text-navy-950 mb-2" data-i18n="val2_t">Approche Globale 360°</h3>
-            <p class="text-sm text-slate-600 leading-relaxed" data-i18n="val2_d">Du financement immobilier ou travaux jusqu'à l'assurance professionnelle, la prévoyance du dirigeant et l'optimisation fiscale de votre patrimoine privé.</p>
-          </div>
-          <div class="bg-white p-7 rounded-2xl border border-slate-200 shadow-sm">
-            <h3 class="font-bold text-lg text-navy-950 mb-2" data-i18n="val3_t">Expertise Transfrontalière</h3>
-            <p class="text-sm text-slate-600 leading-relaxed" data-i18n="val3_d">Fidèle à notre devise « Un Mundo Sin Fronteras », nous accompagnons les familles et entrepreneurs mobiles entre la France, l'Europe et l'international (FR / ES / EN).</p>
-          </div>
-        </div>
-
-        <!-- Carte Adresse Cabinet -->
-        <div class="bg-navy-900 text-white rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div>
-            <span class="text-xs uppercase tracking-widest text-gold-400 font-bold" data-i18n="office_kicker">Notre Cabinet</span>
-            <h3 class="text-xl md:text-2xl font-bold mt-1">99 Avenue Achille Peretti, 92200 Neuilly-sur-Seine</h3>
-            <p class="text-sm text-slate-300 mt-1" data-i18n="office_sub">Rendez-vous au cabinet sur réservation ou en visioconférence internationale.</p>
-          </div>
-          <button type="button" onclick="navigateTo('projet')" data-i18n="office_cta"
-            class="bg-gold-500 hover:bg-gold-600 text-navy-950 font-bold text-sm px-5 py-3 rounded-lg transition shrink-0">
-            Prendre rendez-vous
-          </button>
-        </div>
-
-        <!-- Démarche en 4 étapes -->
-        <div class="bg-white rounded-2xl border border-slate-200 p-8 md:p-10">
-          <h2 class="text-2xl font-extrabold text-navy-950 mb-8" data-i18n="steps_title">Notre méthodologie d'accompagnement en 4 étapes</h2>
-          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="space-y-2">
-              <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-700" data-i18n="step1_k">Étape 01</span>
-              <h4 class="font-bold text-navy-950" data-i18n="step1_t">Audit & Diagnostic</h4>
-              <p class="text-sm text-slate-600" data-i18n="step1_d">Analyse complète de votre capacité d'emprunt, de vos contrats d'assurance actuels, de vos besoins travaux ou de votre structure patrimoniale.</p>
-            </div>
-            <div class="space-y-2">
-              <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-700" data-i18n="step2_k">Étape 02</span>
-              <h4 class="font-bold text-navy-950" data-i18n="step2_t">Négociation & Stratégie</h4>
-              <p class="text-sm text-slate-600" data-i18n="step2_d">Appel d'offres auprès des établissements bancaires, assureurs spécialisés et montage des dossiers d'aides (MaPrimeRénov', CEE).</p>
-            </div>
-            <div class="space-y-2">
-              <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-700" data-i18n="step3_k">Étape 03</span>
-              <h4 class="font-bold text-navy-950" data-i18n="step3_t">Déploiement Sécurisé</h4>
-              <p class="text-sm text-slate-600" data-i18n="step3_d">Gestion administrative intégrale : résiliation Loi Lemoine, déblocage des fonds travaux, souscription des garanties et actes.</p>
-            </div>
-            <div class="space-y-2">
-              <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-700" data-i18n="step4_k">Étape 04</span>
-              <h4 class="font-bold text-navy-950" data-i18n="step4_t">Suivi Continu</h4>
-              <p class="text-sm text-slate-600" data-i18n="step4_d">Bilan annuel de vos contrats, ajustement des garanties professionnelles ou personnelles et arbitrages patrimoniaux.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================================================
-         3. VUE NOS SERVICES (Assurances, Travaux/MaPrimeRénov', Patrimoine)
-         ========================================================= -->
-    <section id="view-services" class="view-section">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-        <div class="max-w-3xl mb-10">
-          <span class="text-xs font-bold uppercase tracking-wider text-emerald-700" data-i18n="srv_kicker">Solutions Sur-Mesure</span>
-          <h1 class="text-3xl md:text-4xl font-extrabold text-navy-950 mt-1" data-i18n="srv_title">Nos Services & Expertises</h1>
-          <p class="text-slate-600 mt-3 text-base" data-i18n="srv_desc">
-            Sélectionnez un pôle d'expertise pour découvrir nos solutions dédiées aux particuliers, aux professionnels et aux patrimoines internationaux.
-          </p>
-        </div>
-
-        <!-- Onglets de filtrage -->
-        <div class="flex flex-wrap gap-2 mb-8">
-          <button type="button" onclick="filterServices('all')" data-srv-tab="all" data-i18n="srv_tab_all"
-            class="srv-tab-btn px-4 py-2.5 rounded-lg text-sm font-bold bg-navy-900 text-white transition">
-            Tous nos services
-          </button>
-          <button type="button" onclick="filterServices('assurances')" data-srv-tab="assurances" data-i18n="srv_tab_ins"
-            class="srv-tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold bg-white text-slate-700 border border-slate-300 hover:bg-slate-50 transition">
-            Assurances Particuliers & Pro
-          </button>
-          <button type="button" onclick="filterServices('travaux')" data-srv-tab="travaux" data-i18n="srv_tab_works"
-            class="srv-tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold bg-white text-slate-700 border border-slate-300 hover:bg-slate-50 transition">
-            Crédits Travaux & MaPrimeRénov'
-          </button>
-          <button type="button" onclick="filterServices('patrimoine')" data-srv-tab="patrimoine" data-i18n="srv_tab_wealth"
-            class="srv-tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold bg-white text-slate-700 border border-slate-300 hover:bg-slate-50 transition">
-            Ingénierie Patrimoniale & Expatriés
-          </button>
-        </div>
-
-        <div class="space-y-8">
-          <!-- BLOC 1 : ASSURANCES PARTICULIERS & PROFESSIONNELS -->
-          <div data-srv-block="assurances" class="srv-block bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm">
-            <div class="flex flex-wrap justify-between items-center gap-4 pb-6 border-b border-slate-100">
+            <div class="bg-blue-50 border border-blue-100 rounded-xl p-4 flex flex-wrap justify-between items-center gap-4">
               <div>
-                <span class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full mb-2" data-i18n="srv1_badge">Courtage en Assurances • COA</span>
-                <h2 class="text-2xl font-extrabold text-navy-950" data-i18n="srv1_title">Assurances Particuliers & Professionnels</h2>
+                <p class="text-xs text-blue-800 uppercase font-semibold" data-i18n="sim_monthly">Mensualité estimée (hors ass.)</p>
+                <p class="text-3xl font-extrabold text-blue-950"><span id="res-mensualite">1 437</span> € <span class="text-sm font-normal" data-i18n="sim_per_month">/ mois</span></p>
               </div>
-              <button type="button" onclick="startProject('Assurances Particuliers / Professionnels')" data-i18n="srv_quote_btn"
-                class="bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold px-4 py-2.5 rounded-lg transition">
-                Demander un devis comparatif
-              </button>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8 pt-6">
-              <div class="space-y-3">
-                <h3 class="font-bold text-navy-900 text-base uppercase tracking-wide" data-i18n="srv1_part_t">Pour les Particuliers</h3>
-                <ul class="space-y-2.5 text-sm text-slate-700">
-                  <li data-i18n="srv1_p1"><strong>Assurance Emprunteur (Loi Lemoine) :</strong> délégation d'assurance à garanties équivalentes pour économiser jusqu'à 50 % sur votre crédit.</li>
-                  <li data-i18n="srv1_p2"><strong>Multirisque Habitation & PNO :</strong> couverture résidence principale, secondaire et propriétaire non occupant (PNO).</li>
-                  <li data-i18n="srv1_p3"><strong>Complémentaire Santé & Prévoyance :</strong> mutuelle famille, seniors, protection accidents de la vie et garantie obsèques.</li>
-                  <li data-i18n="srv1_p4"><strong>Auto, Moto & Véhicules haut de gamme :</strong> contrats sur-mesure tous risques ou au kilomètre.</li>
-                </ul>
-              </div>
-              <div class="space-y-3">
-                <h3 class="font-bold text-navy-900 text-base uppercase tracking-wide" data-i18n="srv1_pro_t">Pour les Professionnels & Entreprises</h3>
-                <ul class="space-y-2.5 text-sm text-slate-700">
-                  <li data-i18n="srv1_e1"><strong>Responsabilité Civile Professionnelle (RC Pro) :</strong> protection des dirigeants, consultants, professions libérales et sociétés.</li>
-                  <li data-i18n="srv1_e2"><strong>Assurance Décennale & Dommages-Ouvrage :</strong> couverture complète des artisans, entreprises du BTP et maîtres d'ouvrage.</li>
-                  <li data-i18n="srv1_e3"><strong>Multirisque Professionnelle & Flotte :</strong> locaux commerciaux, bureaux, matériel et véhicules d'entreprise.</li>
-                  <li data-i18n="srv1_e4"><strong>Prévoyance Dirigeant & Mutuelle Collective :</strong> homme-clé, maintien de revenus TNS et complémentaire santé salariés.</li>
-                </ul>
+              <div class="text-right">
+                <p class="text-xs text-slate-500" data-i18n="sim_total_int">Coût total des intérêts</p>
+                <p id="res-interets" class="text-base font-bold text-slate-800">94 975 €</p>
               </div>
             </div>
           </div>
 
-          <!-- BLOC 2 : CREDITS TRAVAUX & MAPRIMERENOV' -->
-          <div data-srv-block="travaux" class="srv-block bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm">
-            <div class="flex flex-wrap justify-between items-center gap-4 pb-6 border-b border-slate-100">
+          <!-- BLOC SIMULATEUR ASSURANCE -->
+          <div id="panel-assurance" class="space-y-5 hidden">
+            <div>
+              <div class="flex justify-between text-sm font-medium mb-1">
+                <span data-i18n="ins_capital">Capital restant dû</span>
+                <span id="label-capital" class="font-bold text-emerald-700">200 000 €</span>
+              </div>
+              <input id="input-capital" type="range" min="30000" max="800000" step="5000" value="200000" class="w-full accent-emerald-600" />
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
               <div>
-                <span class="inline-block bg-amber-100 text-amber-900 text-xs font-bold px-3 py-1 rounded-full mb-2" data-i18n="srv2_badge">Financement & Rénovation Énergétique</span>
-                <h2 class="text-2xl font-extrabold text-navy-950" data-i18n="srv2_title">Obtention des Crédits Travaux & Accompagnement MaPrimeRénov'</h2>
+                <label class="block text-xs font-medium text-slate-600 mb-1" data-i18n="ins_rem_years">Durée restante (ans)</label>
+                <input id="input-duree-restante" type="number" min="2" max="25" value="15" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm" />
               </div>
-              <button type="button" onclick="startProject('Crédit Travaux & Accompagnement MaPrimeRénov')" data-i18n="srv2_cta"
-                class="bg-navy-900 hover:bg-navy-800 text-white text-sm font-bold px-4 py-2.5 rounded-lg transition">
-                Étudier mon projet travaux
-              </button>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8 pt-6">
-              <div class="space-y-3">
-                <h3 class="font-bold text-navy-900 text-base uppercase tracking-wide" data-i18n="srv2_c1_t">Solutions de Financement Travaux</h3>
-                <ul class="space-y-2.5 text-sm text-slate-700">
-                  <li data-i18n="srv2_c1_1"><strong>Prêt Travaux Affecté ou Personnel :</strong> financement de vos rénovations intérieures, extensions, toiture ou mise aux normes.</li>
-                  <li data-i18n="srv2_c1_2"><strong>Éco-Prêt à Taux Zéro (Éco-PTZ) :</strong> financement sans intérêts des travaux de performance énergétique, cumulable avec les aides de l'État.</li>
-                  <li data-i18n="srv2_c1_3"><strong>Financement du Reste à Charge :</strong> structuration globale combinant crédit immobilier, prêt travaux et subventions déduites.</li>
-                </ul>
-              </div>
-              <div class="space-y-3">
-                <h3 class="font-bold text-navy-900 text-base uppercase tracking-wide" data-i18n="srv2_c2_t">Accompagnement Aides & Subventions</h3>
-                <ul class="space-y-2.5 text-sm text-slate-700">
-                  <li data-i18n="srv2_c2_1"><strong>Dossier MaPrimeRénov' :</strong> vérification d'éligibilité (parcours par geste ou rénovation d'ampleur), contrôle des devis RGE et suivi jusqu'au versement.</li>
-                  <li data-i18n="srv2_c2_2"><strong>Primes CEE (Certificats d'Économies d'Énergie) :</strong> optimisation du cumul des primes fournisseurs d'énergie pour réduire votre budget.</li>
-                  <li data-i18n="srv2_c2_3"><strong>TVA réduite à 5,5 % & Aides Locales :</strong> sécurisation administrative de l'ensemble de votre plan de financement rénovation.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- BLOC 3 : INGENIERIE PATRIMONIALE & EXPATRIES -->
-          <div data-srv-block="patrimoine" class="srv-block bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm">
-            <div class="flex flex-wrap justify-between items-center gap-4 pb-6 border-b border-slate-100">
               <div>
-                <span class="inline-block bg-blue-100 text-navy-900 text-xs font-bold px-3 py-1 rounded-full mb-2" data-i18n="srv3_badge">Conseil Patrimonial • Neuilly-sur-Seine & International</span>
-                <h2 class="text-2xl font-extrabold text-navy-950" data-i18n="srv3_title">Ingénierie Patrimoniale, Dirigeants & Expatriés</h2>
+                <label class="block text-xs font-medium text-slate-600 mb-1" data-i18n="ins_age">Votre âge</label>
+                <input id="input-age" type="number" min="18" max="75" value="35" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm" />
               </div>
-              <button type="button" onclick="startProject('Bilan Patrimonial / Expatriés / Dirigeant')" data-i18n="srv3_cta"
-                class="bg-navy-900 hover:bg-navy-800 text-white text-sm font-bold px-4 py-2.5 rounded-lg transition">
-                Demander un bilan patrimonial
-              </button>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8 pt-6">
-              <div class="space-y-3">
-                <h3 class="font-bold text-navy-900 text-base uppercase tracking-wide" data-i18n="srv3_c1_t">Fiscalité, Gestion d'Actifs & Dirigeants</h3>
-                <ul class="space-y-2.5 text-sm text-slate-700">
-                  <li data-i18n="srv3_c1_1"><strong>Ingénierie Fiscale & Transmission :</strong> Pacte Dutreil, structuration de holdings, apport-cession (150-0 B ter) et préparation successorale.</li>
-                  <li data-i18n="srv3_c1_2"><strong>Gestion d'Actifs en Architecture Ouverte :</strong> assurance-vie, PER, comptes-titres, Private Equity et allocation sur-mesure.</li>
-                  <li data-i18n="srv3_c1_3"><strong>Trésorerie d'Entreprise :</strong> placement sécurisé des excédents de trésorerie de société.</li>
-                </ul>
+            <div class="flex items-center gap-3">
+              <input id="input-fumeur" type="checkbox" class="w-4 h-4 accent-emerald-600" />
+              <label for="input-fumeur" class="text-sm text-slate-700" data-i18n="ins_smoker">Assuré fumeur (ou vapoteur)</label>
+            </div>
+
+            <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4 flex flex-wrap justify-between items-center gap-4">
+              <div>
+                <p class="text-xs text-emerald-800 uppercase font-semibold" data-i18n="ins_savings">Économie globale estimée</p>
+                <p id="res-economie" class="text-3xl font-extrabold text-emerald-900">6 300 €</p>
               </div>
-              <div class="space-y-3">
-                <h3 class="font-bold text-navy-900 text-base uppercase tracking-wide" data-i18n="srv3_c2_t">Solutions Transfrontalières & Expatriés</h3>
-                <ul class="space-y-2.5 text-sm text-slate-700">
-                  <li data-i18n="srv3_c2_1"><strong>Assurance-Vie Luxembourgeoise :</strong> neutralité fiscale, super-privilège et portabilité internationale en cas de changement de résidence.</li>
-                  <li data-i18n="srv3_c2_2"><strong>Gestion Multi-Devises :</strong> investissement et arbitrage en EUR, USD, GBP ou CHF selon votre pays d'expatriation.</li>
-                  <li data-i18n="srv3_c2_3"><strong>Impatriation & Conventions Bilatérales :</strong> accompagnement fiscal lors du retour en France ou d'investissements immobiliers transfrontaliers.</li>
-                </ul>
+              <div class="text-right">
+                <p class="text-xs text-emerald-700" data-i18n="ins_approx">Soit environ</p>
+                <p id="res-economie-mois" class="text-base font-bold text-emerald-900">-35 € / mois</p>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- =========================================================
-         4. VUE VOTRE PROJET & CONTACT
-         ========================================================= -->
-    <section id="view-projet" class="view-section">
-      <div class="max-w-5xl mx-auto px-4 py-14">
-        <div class="grid lg:grid-cols-12 gap-10 items-start">
-
-          <div class="lg:col-span-5 space-y-5">
-            <span class="text-xs font-bold uppercase tracking-wider text-emerald-700" data-i18n="prj_kicker">Étude Personnalisée & Confidentielle</span>
-            <h1 class="text-3xl font-extrabold text-navy-950" data-i18n="prj_title">Parlons de votre projet</h1>
-            <p class="text-sm text-slate-600 leading-relaxed" data-i18n="prj_desc">
-              Que vous souhaitiez négocier un crédit immobilier ou travaux, obtenir vos aides MaPrimeRénov', assurer votre activité professionnelle ou structurer votre patrimoine, un conseiller dédié vous répond sous 24h ouvrées.
-            </p>
-
-            <div class="bg-white p-5 rounded-xl border border-slate-200 space-y-3 text-sm">
-              <p class="font-bold text-navy-950">Monarca Assurance & Patrimoine</p>
-              <p class="text-slate-700 font-medium">📍 99 Avenue Achille Peretti, 92200 Neuilly-sur-Seine</p>
-              <p class="text-slate-600" data-i18n="prj_orias">• Courtier immatriculé à l'ORIAS n° 24006933 (COBSP & COA)</p>
-              <p class="text-slate-600" data-i18n="prj_lang">• Accompagnement en Français, Espagnol et Anglais</p>
-            </div>
-          </div>
-
-          <div class="lg:col-span-7 bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-lg">
-            <div id="project-success" class="hidden bg-navy-950 text-white p-6 rounded-xl text-center space-y-2">
-              <p class="font-bold text-xl text-emerald-400" data-i18n="prj_ok_title">Votre demande de projet est enregistrée !</p>
-              <p class="text-sm text-slate-300" data-i18n="prj_ok_desc">Merci pour votre confiance. Un conseiller Monarca analyse votre dossier et vous recontacte sous 24h ouvrées.</p>
+          <!-- FORMULAIRE ENVOI PAR EMAIL -->
+          <div class="pt-4 border-t border-slate-200">
+            <div id="success-message" class="hidden bg-slate-900 text-white p-5 rounded-xl text-center space-y-2">
+              <p class="font-bold text-lg text-emerald-400" data-i18n="lead_success_title">Demande envoyée avec succès !</p>
+              <p class="text-sm text-slate-300" data-i18n="lead_success_desc">Votre simulation a été transmise à Monarca Assurance. Vous recevrez votre étude détaillée par email et serez recontacté sous 24h.</p>
             </div>
 
-            <form id="project-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+            <form id="lead-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-3">
               <input type="hidden" name="access_key" value="d78c7717-8d76-40f9-a88e-d283d474ec29" />
-              <input type="hidden" name="subject" value="Nouvelle demande de projet - Site Monarca" />
-              <input type="hidden" name="from_name" value="Formulaire Projet Monarca" />
+              <input type="hidden" name="subject" id="email-subject" value="Nouveau prospect - Prêt Immobilier" />
+              <input type="hidden" name="from_name" value="Simulateur Monarca Assurance" />
+              <input type="hidden" name="Detail_Simulation" id="hidden-simulation-summary" value="" />
 
-              <div>
-                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5" data-i18n="prj_lbl_type">Objet de votre projet</label>
-                <select id="project-type" name="Type_Projet" class="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm bg-white focus:outline-none focus:border-navy-900">
-                  <option value="Prêt Immobilier / Renégociation">Prêt Immobilier / Renégociation de taux</option>
-                  <option value="Assurance Emprunteur (Loi Lemoine)">Assurance Emprunteur (Économie Loi Lemoine)</option>
-                  <option value="Assurances Particuliers / Professionnels">Assurances Particuliers ou Professionnels (RC Pro, Décennale, Santé, Habitation...)</option>
-                  <option value="Crédit Travaux & Accompagnement MaPrimeRénov">Crédit Travaux, Éco-PTZ & Accompagnement MaPrimeRénov'</option>
-                  <option value="Bilan Patrimonial / Expatriés / Dirigeant">Bilan Patrimonial, Fiscalité, Dirigeant ou Expatrié</option>
-                </select>
-              </div>
-
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5" data-i18n="prj_lbl_profile">Votre profil</label>
-                  <select name="Profil_Client" class="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm bg-white focus:outline-none focus:border-navy-900">
-                    <option value="Particulier">Particulier / Famille</option>
-                    <option value="Professionnel / Dirigeant">Professionnel / Chef d'entreprise</option>
-                    <option value="Expatrié / Non-résident">Expatrié / Non-résident</option>
-                  </select>
-                </div>
-                <div>
-                  <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5" data-i18n="prj_lbl_budget">Budget ou montant estimé (€)</label>
-                  <input type="text" name="Budget_Estime" placeholder="Ex : 150 000 €"
-                    class="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-navy-900" />
-                </div>
-              </div>
+              <p class="text-sm font-bold text-slate-800" data-i18n="lead_prompt">
+                Recevoir cette simulation détaillée + les meilleurs taux négociés :
+              </p>
 
               <div class="grid sm:grid-cols-3 gap-3">
-                <input type="text" name="Nom_Prospect" required data-i18n-ph="ph_name" placeholder="Nom & Prénom"
-                  class="border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-navy-900" />
-                <input type="email" name="Email_Prospect" required data-i18n-ph="ph_email" placeholder="Email"
-                  class="border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-navy-900" />
-                <input type="tel" name="Telephone_Prospect" required data-i18n-ph="ph_phone" placeholder="Téléphone"
-                  class="border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-navy-900" />
+                <input type="text" name="Nom_Prospect" required data-i18n-placeholder="ph_name" placeholder="Nom &amp; Prénom"
+                  class="border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-blue-900" />
+                <input type="email" name="Email_Prospect" required data-i18n-placeholder="ph_email" placeholder="Email"
+                  class="border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-blue-900" />
+                <input type="tel" name="Telephone_Prospect" required data-i18n-placeholder="ph_phone" placeholder="Téléphone"
+                  class="border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-blue-900" />
               </div>
 
-              <div>
-                <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5" data-i18n="prj_lbl_msg">Précisions sur votre besoin</label>
-                <textarea name="Message_Projet" rows="3" data-i18n-ph="ph_msg" placeholder="Décrivez brièvement votre projet (nature des travaux, type d'assurance recherchée, délai souhaité...)"
-                  class="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-navy-900"></textarea>
-              </div>
-
-              <label class="flex items-start gap-2 text-xs text-slate-500">
-                <input type="checkbox" name="Consentement_RGPD" value="Oui" required class="mt-0.5 accent-navy-900" />
-                <span data-i18n="prj_rgpd">J’accepte que mes données soient traitées par Monarca Assurance pour l'étude de mon projet et être recontacté conformément au RGPD.</span>
+              <label class="flex items-start gap-2 text-xs text-slate-500 pt-1">
+                <input type="checkbox" name="Consentement_RGPD" value="Oui" required class="mt-0.5 accent-blue-900" />
+                <span data-i18n="rgpd_text">J’accepte que mes données soient traitées par Monarca Assurance pour réaliser mon étude financière et être recontacté, conformément à la politique de confidentialité (RGPD).</span>
               </label>
 
-              <button id="project-submit-btn" type="submit" data-i18n="prj_submit"
-                class="w-full bg-navy-900 hover:bg-navy-800 text-white font-bold py-3 rounded-lg transition shadow-md">
-                Envoyer ma demande d'étude gratuite
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- PIED DE PAGE OBLIGATOIRE -->
-  <footer class="bg-navy-950 text-slate-400 text-xs py-10 px-4 mt-12 border-t border-slate-800">
-    <div class="max-w-7xl mx-auto space-y-3">
-      <div class="flex flex-wrap justify-between items-center gap-4 pb-3 border-b border-slate-800">
-        <div>
-          <p class="text-white font-semibold text-sm">Monarca Assurance & Patrimoine — « Un Mundo Sin Fronteras »</p>
-          <p class="text-slate-300 mt-0.5">99 Avenue Achille Peretti, 92200 Neuilly-sur-Seine, France</p>
-        </div>
-        <div class="flex gap-4 text-slate-300">
-          <button type="button" onclick="navigateTo('accueil')" data-i18n="foot_sim" class="hover:text-white">Simulateur</button>
-          <button type="button" onclick="navigateTo('apropos')" data-i18n="foot_about" class="hover:text-white">Qui Sommes-Nous</button>
-          <button type="button" onclick="navigateTo('services')" data-i18n="foot_srv" class="hover:text-white">Nos Services</button>
-          <button type="button" onclick="navigateTo('projet')" data-i18n="foot_cnt" class="hover:text-white">Contact</button>
-        </div>
-      </div>
-      <p data-i18n="foot_reg1">Courtier en opérations de banque et en services de paiement (COBSP) et courtier en assurance (COA), immatriculé à l'ORIAS sous le n° 24006933 (vérifiable sur www.orias.fr).</p>
-      <p data-i18n="foot_reg2">Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager. Les résultats des simulateurs ainsi que les estimations d'aides MaPrimeRénov' sont donnés à titre indicatif et non contractuel.</p>
-    </div>
-  </footer>
-
-  <!-- LOGIQUE NAVIGATION, TRADUCTION (FR/ES/EN), SIMULATEURS & ENVOI -->
-  <script>
-    let currentTab = 'pret';
-    let currentLang = 'fr';
-
-    const translations = {
-      fr: {
-        brand_sub: "& Ingénierie Patrimoniale",
-        nav_sim: "Simulateur & Accueil",
-        nav_about: "Qui Sommes-Nous ?",
-        nav_services: "Nos Services",
-        nav_project: "Votre Projet",
-        nav_cta: "Étude gratuite",
-        badge_orias: "Courtier indépendant • ORIAS n° 24006933",
-        hero_title: 'Optimisez votre <span class="text-navy-900">prêt immobilier</span> et divisez le coût de votre <span class="text-emerald-600">assurance</span>.',
-        hero_desc: "Simulez instantanément vos mensualités ou vos économies grâce à la loi Lemoine. Notre cabinet basé à Neuilly-sur-Seine vous accompagne également sur vos assurances particuliers/professionnels, crédits travaux, dossiers MaPrimeRénov' et stratégies patrimoniales.",
-        hero_b1: "Simulation immédiate, gratuite et sans engagement",
-        hero_b2: "Changement d'assurance emprunteur à tout moment (Loi Lemoine)",
-        hero_b3: "Financement travaux, accompagnement MaPrimeRénov' & assurances pro/perso",
-        hero_b4: "Un conseiller Monarca vous rappelle sous 24h ouvrées",
-        hero_btn_services: "Découvrir tous nos services →",
-        hero_btn_about: "Qui sommes-nous ?",
-        sim_tab_loan: "Simulateur Prêt Immobilier",
-        sim_tab_ins: "Économie Assurance (Lemoine)",
-        sim_amount: "Montant à emprunter",
-        sim_duration: "Durée du prêt",
-        sim_rate: "Taux nominal estimé",
-        sim_monthly_label: "Mensualité estimée (hors ass.)",
-        sim_per_month: "/ mois",
-        sim_interest_label: "Coût total des intérêts",
-        sim_capital: "Capital restant dû",
-        sim_rem_years: "Durée restante (ans)",
-        sim_age: "Votre âge",
-        sim_smoker: "Assuré fumeur (ou vapoteur)",
-        sim_savings_label: "Économie globale estimée",
-        sim_approx: "Soit environ",
-        lead_ok_title: "Demande envoyée avec succès !",
-        lead_ok_desc: "Votre simulation a été transmise à Monarca Assurance. Vous recevrez votre étude détaillée par email et serez recontacté sous 24h.",
-        lead_title: "Recevoir cette simulation détaillée + les meilleurs taux négociés :",
-        lead_rgpd: "J’accepte que mes données soient traitées par Monarca Assurance pour réaliser mon étude financière et être recontacté, conformément à la politique de confidentialité (RGPD).",
-        lead_submit: "Recevoir mon étude personnalisée gratuite",
-        ph_name: "Nom & Prénom",
-        ph_email: "Email",
-        ph_phone: "Téléphone",
-        ph_msg: "Décrivez brièvement votre projet (nature des travaux, type d'assurance recherchée, délai souhaité...)",
-        home_exp_kicker: "Accompagnement 360°",
-        home_exp_title: "Au-delà du prêt immobilier : nos domaines d'intervention",
-        home_exp_link: "Voir le détail des services →",
-        card1_t: "Assurances Particuliers & Professionnels",
-        card1_d: "Assurance emprunteur, habitation, santé, auto/moto pour les particuliers ; RC Pro, décennale, multirisque et prévoyance dirigeant pour les entreprises.",
-        card2_t: "Crédits Travaux & MaPrimeRénov'",
-        card2_d: "Obtention de financements travaux, Éco-PTZ et accompagnement complet pour sécuriser vos subventions MaPrimeRénov' et primes CEE.",
-        card3_t: "Ingénierie Patrimoniale & Expatriés",
-        card3_d: "Structuration fiscale, holding, Pacte Dutreil, gestion d'actifs et solutions transfrontalières (assurance-vie luxembourgeoise multi-devises).",
-        about_badge: "Cabinet Indépendant • Neuilly-sur-Seine & International",
-        about_title: "Protéger, financer et structurer vos projets « Sin Fronteras ».",
-        about_intro: "Implanté au 99 Avenue Achille Peretti à Neuilly-sur-Seine (92200), Monarca réunit le courtage en financement et assurances (ORIAS n° 24006933) et le conseil en ingénierie patrimoniale en architecture ouverte.",
-        val1_t: "100 % Indépendant",
-        val1_d: "Libres de tout réseau bancaire ou compagnie captive, nous mettons en concurrence l'ensemble des banques, assureurs et partenaires financiers pour défendre uniquement vos intérêts.",
-        val2_t: "Approche Globale 360°",
-        val2_d: "Du financement immobilier ou travaux jusqu'à l'assurance professionnelle, la prévoyance du dirigeant et l'optimisation fiscale de votre patrimoine privé.",
-        val3_t: "Expertise Transfrontalière",
-        val3_d: "Fidèle à notre devise « Un Mundo Sin Fronteras », nous accompagnons les familles et entrepreneurs mobiles entre la France, l'Europe et l'international (FR / ES / EN).",
-        office_kicker: "Notre Cabinet",
-        office_sub: "Rendez-vous au cabinet sur réservation ou en visioconférence internationale.",
-        office_cta: "Prendre rendez-vous",
-        steps_title: "Notre méthodologie d'accompagnement en 4 étapes",
-        step1_k: "Étape 01", step1_t: "Audit & Diagnostic", step1_d: "Analyse complète de votre capacité d'emprunt, de vos contrats d'assurance actuels, de vos besoins travaux ou de votre structure patrimoniale.",
-        step2_k: "Étape 02", step2_t: "Négociation & Stratégie", step2_d: "Appel d'offres auprès des établissements bancaires, assureurs spécialisés et montage des dossiers d'aides (MaPrimeRénov', CEE).",
-        step3_k: "Étape 03", step3_t: "Déploiement Sécurisé", step3_d: "Gestion administrative intégrale : résiliation Loi Lemoine, déblocage des fonds travaux, souscription des garanties et actes.",
-        step4_k: "Étape 04", step4_t: "Suivi Continu", step4_d: "Bilan annuel de vos contrats, ajustement des garanties professionnelles ou personnelles et arbitrages patrimoniaux.",
-        srv_kicker: "Solutions Sur-Mesure",
-        srv_title: "Nos Services & Expertises",
-        srv_desc: "Sélectionnez un pôle d'expertise pour découvrir nos solutions dédiées aux particuliers, aux professionnels et aux patrimoines internationaux.",
-        srv_tab_all: "Tous nos services",
-        srv_tab_ins: "Assurances Particuliers & Pro",
-        srv_tab_works: "Crédits Travaux & MaPrimeRénov'",
-        srv_tab_wealth: "Ingénierie Patrimoniale & Expatriés",
-        srv1_badge: "Courtage en Assurances • COA",
-        srv1_title: "Assurances Particuliers & Professionnels",
-        srv_quote_btn: "Demander un devis comparatif",
-        srv1_part_t: "Pour les Particuliers",
-        srv1_p1: "<strong>Assurance Emprunteur (Loi Lemoine) :</strong> délégation d'assurance à garanties équivalentes pour économiser jusqu'à 50 % sur votre crédit.",
-        srv1_p2: "<strong>Multirisque Habitation & PNO :</strong> couverture résidence principale, secondaire et propriétaire non occupant (PNO).",
-        srv1_p3: "<strong>Complémentaire Santé & Prévoyance :</strong> mutuelle famille, seniors, protection accidents de la vie et garantie obsèques.",
-        srv1_p4: "<strong>Auto, Moto & Véhicules haut de gamme :</strong> contrats sur-mesure tous risques ou au kilomètre.",
-        srv1_pro_t: "Pour les Professionnels & Entreprises",
-        srv1_e1: "<strong>Responsabilité Civile Professionnelle (RC Pro) :</strong> protection des dirigeants, consultants, professions libérales et sociétés.",
-        srv1_e2: "<strong>Assurance Décennale & Dommages-Ouvrage :</strong> couverture complète des artisans, entreprises du BTP et maîtres d'ouvrage.",
-        srv1_e3: "<strong>Multirisque Professionnelle & Flotte :</strong> locaux commerciaux, bureaux, matériel et véhicules d'entreprise.",
-        srv1_e4: "<strong>Prévoyance Dirigeant & Mutuelle Collective :</strong> homme-clé, maintien de revenus TNS et complémentaire santé salariés.",
-        srv2_badge: "Financement & Rénovation Énergétique",
-        srv2_title: "Obtention des Crédits Travaux & Accompagnement MaPrimeRénov'",
-        srv2_cta: "Étudier mon projet travaux",
-        srv2_c1_t: "Solutions de Financement Travaux",
-        srv2_c1_1: "<strong>Prêt Travaux Affecté ou Personnel :</strong> financement de vos rénovations intérieures, extensions, toiture ou mise aux normes.",
-        srv2_c1_2: "<strong>Éco-Prêt à Taux Zéro (Éco-PTZ) :</strong> financement sans intérêts des travaux de performance énergétique, cumulable avec les aides de l'État.",
-        srv2_c1_3: "<strong>Financement du Reste à Charge :</strong> structuration globale combinant crédit immobilier, prêt travaux et subventions déduites.",
-        srv2_c2_t: "Accompagnement Aides & Subventions",
-        srv2_c2_1: "<strong>Dossier MaPrimeRénov' :</strong> vérification d'éligibilité (parcours par geste ou rénovation d'ampleur), contrôle des devis RGE et suivi jusqu'au versement.",
-        srv2_c2_2: "<strong>Primes CEE (Certificats d'Économies d'Énergie) :</strong> optimisation du cumul des primes fournisseurs d'énergie pour réduire votre budget.",
-        srv2_c2_3: "<strong>TVA réduite à 5,5 % & Aides Locales :</strong> sécurisation administrative de l'ensemble de votre plan de financement rénovation.",
-        srv3_badge: "Conseil Patrimonial • Neuilly-sur-Seine & International",
-        srv3_title: "Ingénierie Patrimoniale, Dirigeants & Expatriés",
-        srv3_cta: "Demander un bilan patrimonial",
-        srv3_c1_t: "Fiscalité, Gestion d'Actifs & Dirigeants",
-        srv3_c1_1: "<strong>Ingénierie Fiscale & Transmission :</strong> Pacte Dutreil, structuration de holdings, apport-cession (150-0 B ter) et préparation successorale.",
-        srv3_c1_2: "<strong>Gestion d'Actifs en Architecture Ouverte :</strong> assurance-vie, PER, comptes-titres, Private Equity et allocation sur-mesure.",
-        srv3_c1_3: "<strong>Trésorerie d'Entreprise :</strong> placement sécurisé des excédents de trésorerie de société.",
-        srv3_c2_t: "Solutions Transfrontalières & Expatriés",
-        srv3_c2_1: "<strong>Assurance-Vie Luxembourgeoise :</strong> neutralité fiscale, super-privilège et portabilité internationale en cas de changement de résidence.",
-        srv3_c2_2: "<strong>Gestion Multi-Devises :</strong> investissement et arbitrage en EUR, USD, GBP ou CHF selon votre pays d'expatriation.",
-        srv3_c2_3: "<strong>Impatriation & Conventions Bilatérales :</strong> accompagnement fiscal lors du retour en France ou d'investissements immobiliers transfrontaliers.",
-        prj_kicker: "Étude Personnalisée & Confidentielle",
-        prj_title: "Parlons de votre projet",
-        prj_desc: "Que vous souhaitiez négocier un crédit immobilier ou travaux, obtenir vos aides MaPrimeRénov', assurer votre activité professionnelle ou structurer votre patrimoine, un conseiller dédié vous répond sous 24h ouvrées.",
-        prj_orias: "• Courtier immatriculé à l'ORIAS n° 24006933 (COBSP & COA)",
-        prj_lang: "• Accompagnement en Français, Espagnol et Anglais",
-        prj_ok_title: "Votre demande de projet est enregistrée !",
-        prj_ok_desc: "Merci pour votre confiance. Un conseiller Monarca analyse votre dossier et vous recontacte sous 24h ouvrées.",
-        prj_lbl_type: "Objet de votre projet",
-        prj_lbl_profile: "Votre profil",
-        prj_lbl_budget: "Budget ou montant estimé (€)",
-        prj_lbl_msg: "Précisions sur votre besoin",
-        prj_rgpd: "J’accepte que mes données soient traitées par Monarca Assurance pour l'étude de mon projet et être recontacté conformément au RGPD.",
-        prj_submit: "Envoyer ma demande d'étude gratuite",
-        foot_sim: "Simulateur",
-        foot_about: "Qui Sommes-Nous",
-        foot_srv: "Nos Services",
-        foot_cnt: "Contact",
-        foot_reg1: "Courtier en opérations de banque et en services de paiement (COBSP) et courtier en assurance (COA), immatriculé à l'ORIAS sous le n° 24006933 (vérifiable sur www.orias.fr).",
-        foot_reg2: "Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager. Les résultats des simulateurs ainsi que les estimations d'aides MaPrimeRénov' sont donnés à titre indicatif et non contractuel.",
-        unit_years: "ans"
-      },
-      es: {
-        brand_sub: "& Ingeniería Patrimonial",
-        nav_sim: "Simulador e Inicio",
-        nav_about: "Quiénes Somos",
-        nav_services: "Nuestros Servicios",
-        nav_project: "Su Proyecto",
-        nav_cta: "Estudio gratuito",
-        badge_orias: "Corredor independiente • ORIAS n° 24006933",
-        hero_title: 'Optimice su <span class="text-navy-900">préstamo hipotecario</span> y reduzca el coste de su <span class="text-emerald-600">seguro</span>.',
-        hero_desc: "Simule al instante sus cuotas mensuales o su ahorro gracias a la Ley Lemoine. Nuestra oficina en Neuilly-sur-Seine también le acompaña en seguros para particulares y empresas, créditos para reformas, ayudas MaPrimeRénov' y estrategias patrimoniales.",
-        hero_b1: "Simulación inmediata, gratuita y sin compromiso",
-        hero_b2: "Cambio de seguro hipotecario en cualquier momento (Ley Lemoine)",
-        hero_b3: "Financiación de obras, gestión MaPrimeRénov' y seguros empresas/particulares",
-        hero_b4: "Un asesor de Monarca le contacta en menos de 24h laborables",
-        hero_btn_services: "Descubrir todos nuestros servicios →",
-        hero_btn_about: "¿Quiénes somos?",
-        sim_tab_loan: "Simulador Préstamo Hipotecario",
-        sim_tab_ins: "Ahorro Seguro (Lemoine)",
-        sim_amount: "Importe a solicitar",
-        sim_duration: "Plazo del préstamo",
-        sim_rate: "Tipo nominal estimado",
-        sim_monthly_label: "Cuota mensual estimada (sin seg.)",
-        sim_per_month: "/ mes",
-        sim_interest_label: "Coste total de los intereses",
-        sim_capital: "Capital pendiente",
-        sim_rem_years: "Plazo restante (años)",
-        sim_age: "Su edad",
-        sim_smoker: "Asegurado fumador (o vapeador)",
-        sim_savings_label: "Ahorro global estimado",
-        sim_approx: "Aproximadamente",
-        lead_ok_title: "¡Solicitud enviada con éxito!",
-        lead_ok_desc: "Su simulación ha sido enviada a Monarca Assurance. Recibirá su estudio detallado por correo electrónico y le contactaremos en 24h.",
-        lead_title: "Recibir esta simulación detallada + los mejores tipos negociados:",
-        lead_rgpd: "Acepto que mis datos sean tratados por Monarca Assurance para realizar mi estudio financiero y ser contactado conforme al RGPD.",
-        lead_submit: "Recibir mi estudio personalizado gratuito",
-        ph_name: "Nombre y Apellidos",
-        ph_email: "Correo electrónico",
-        ph_phone: "Teléfono",
-        ph_msg: "Describa bre
+              <button id="submit-btn" type="submit"
+                class="w-full bg-blue-900 hover:bg-blue-800 text-
