@@ -8,10 +8,9 @@
 </head>
 <body class="bg-slate-50 text-slate-900 font-sans antialiased">
 
-  <!-- EN-TÊTE -->
+  <!-- EN-TETE -->
   <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
     <div class="max-w-6xl mx-auto px-4 py-3.5 flex flex-wrap justify-between items-center gap-3">
-      <!-- Logo -->
       <button type="button" data-nav="accueil" class="flex items-center gap-2.5 text-left focus:outline-none">
         <div class="w-10 h-10 bg-blue-950 rounded-lg flex items-center justify-center text-amber-400 font-serif font-bold text-xl shadow">M</div>
         <div>
@@ -30,7 +29,7 @@
         <button type="button" data-nav="projet" class="nav-btn px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-blue-950 hover:bg-slate-50 transition" data-i18n="nav_project">Votre Projet</button>
       </nav>
 
-      <!-- Sélecteur Langue + Bouton CTA -->
+      <!-- Selecteur Langue + CTA -->
       <div class="flex items-center gap-2.5">
         <div class="flex items-center bg-slate-100 p-1 rounded-lg border border-slate-200 text-xs font-bold">
           <button type="button" data-lang="fr" class="lang-btn px-2 py-1 rounded bg-white text-blue-950 shadow-sm transition">FR</button>
@@ -56,7 +55,7 @@
   <section id="view-accueil" class="page-view max-w-6xl mx-auto px-4 py-10 md:py-16">
     <div class="grid lg:grid-cols-12 gap-10 items-start">
 
-      <!-- Colonne gauche : Argumentaire -->
+      <!-- Colonne gauche -->
       <div class="lg:col-span-5 space-y-6">
         <span class="inline-block bg-emerald-100 text-emerald-800 text-xs font-semibold px-3 py-1 rounded-full" data-i18n="badge_orias">
           Courtier indépendant • ORIAS n° 24006933
@@ -65,12 +64,12 @@
           Optimisez votre <span class="text-blue-900">prêt immobilier</span>, vos <span class="text-emerald-600">assurances</span> et vos <span class="text-amber-600">projets travaux</span>.
         </h1>
         <p class="text-slate-600 text-base leading-relaxed" data-i18n="hero_desc">
-          Simulez instantanément vos mensualités ou vos économies grâce à la loi Lemoine. Notre cabinet à Neuilly-sur-Seine vous accompagne également sur vos assurances particuliers &amp; pros, vos crédits travaux et dossiers MaPrimeRénov'.
+          Simulez instantanément vos mensualités ou vos économies grâce à la loi Lemoine. Notre cabinet à Neuilly-sur-Seine vous accompagne également sur vos assurances particuliers &amp; pros, vos crédits travaux et dossiers MaPrimeRénov.
         </p>
         <ul class="space-y-3 text-sm text-slate-700">
           <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">✓</span> <span data-i18n="hero_b1">Simulation immédiate, gratuite et sans engagement</span></li>
-          <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">✓</span> <span data-i18n="hero_b2">Changement d'assurance emprunteur à tout moment (Loi Lemoine)</span></li>
-          <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">✓</span> <span data-i18n="hero_b3">Financement travaux, aides MaPrimeRénov' &amp; assurances sur-mesure</span></li>
+          <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">✓</span> <span data-i18n="hero_b2">Changement d assurance emprunteur à tout moment (Loi Lemoine)</span></li>
+          <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">✓</span> <span data-i18n="hero_b3">Financement travaux, aides MaPrimeRénov &amp; assurances sur-mesure</span></li>
         </ul>
         <div class="pt-2 flex flex-wrap gap-3">
           <button type="button" data-nav="services" class="bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold px-4 py-2.5 rounded-lg transition" data-i18n="btn_discover_services">
@@ -82,10 +81,9 @@
         </div>
       </div>
 
-      <!-- Colonne droite : Simulateur + Formulaire Email -->
+      <!-- Colonne droite : Simulateur + Formulaire -->
       <div class="lg:col-span-7 bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
         
-        <!-- Onglets Simulateur -->
         <div class="grid grid-cols-2 border-b border-slate-200 bg-slate-100">
           <button id="tab-pret" type="button" class="py-4 text-xs sm:text-sm font-bold bg-white text-blue-900 border-b-2 border-blue-900 transition" data-i18n="sim_tab_loan">
             Simulateur Prêt Immobilier
@@ -97,7 +95,7 @@
 
         <div class="p-6 md:p-8 space-y-6">
 
-          <!-- BLOC SIMULATEUR PRET -->
+          <!-- SIMULATEUR PRET -->
           <div id="panel-pret" class="space-y-5">
             <div>
               <div class="flex justify-between text-sm font-medium mb-1">
@@ -135,7 +133,7 @@
             </div>
           </div>
 
-          <!-- BLOC SIMULATEUR ASSURANCE -->
+          <!-- SIMULATEUR ASSURANCE -->
           <div id="panel-assurance" class="space-y-5 hidden">
             <div>
               <div class="flex justify-between text-sm font-medium mb-1">
@@ -173,7 +171,7 @@
             </div>
           </div>
 
-          <!-- FORMULAIRE ENVOI PAR EMAIL -->
+          <!-- FORMULAIRE EMAIL -->
           <div class="pt-4 border-t border-slate-200">
             <div id="success-message" class="hidden bg-slate-900 text-white p-5 rounded-xl text-center space-y-2">
               <p class="font-bold text-lg text-emerald-400" data-i18n="lead_success_title">Demande envoyée avec succès !</p>
@@ -205,4 +203,483 @@
               </label>
 
               <button id="submit-btn" type="submit"
-                class="w-full bg-blue-900 hover:bg-blue-800 text-
+                class="w-full bg-blue-900 hover:bg-blue-800 text-white font-bold py-3 rounded-lg transition shadow-md" data-i18n="lead_submit">
+                Recevoir mon étude personnalisée gratuite
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== VUE 2 : QUI SOMMES-NOUS ==================== -->
+  <section id="view-about" class="page-view hidden max-w-6xl mx-auto px-4 py-12 md:py-16 space-y-12">
+    <div class="bg-blue-950 text-white rounded-2xl p-8 md:p-12 shadow-lg">
+      <span class="inline-block bg-amber-400/20 text-amber-300 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4" data-i18n="about_badge">
+        Cabinet Indépendant • Neuilly-sur-Seine
+      </span>
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-4" data-i18n="about_title">
+        Monarca Assurance &amp; Patrimoine — « Un Mundo Sin Fronteras »
+      </h2>
+      <p class="text-slate-300 text-base md:text-lg max-w-3xl leading-relaxed" data-i18n="about_intro">
+        Implanté au <strong class="text-white">99 Avenue Achille Peretti à Neuilly-sur-Seine (92200)</strong> et immatriculé à l'ORIAS (n° 24006933), notre cabinet indépendant accompagne les particuliers, les dirigeants d'entreprise et les expatriés dans la protection de leurs biens, le financement de leurs projets et la structuration de leur patrimoine.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+        <div class="w-10 h-10 bg-blue-100 text-blue-900 rounded-lg flex items-center justify-center font-bold text-lg">01</div>
+        <h3 class="text-lg font-bold text-slate-950" data-i18n="pillar1_t">Indépendance Totale</h3>
+        <p class="text-sm text-slate-600 leading-relaxed" data-i18n="pillar1_d">
+          Libres de tout réseau bancaire ou compagnie unique, nous mettons en concurrence les meilleurs assureurs et établissements financiers en architecture ouverte.
+        </p>
+      </div>
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+        <div class="w-10 h-10 bg-emerald-100 text-emerald-800 rounded-lg flex items-center justify-center font-bold text-lg">02</div>
+        <h3 class="text-lg font-bold text-slate-950" data-i18n="pillar2_t">Approche 360° &amp; Sur-Mesure</h3>
+        <p class="text-sm text-slate-600 leading-relaxed" data-i18n="pillar2_d">
+          Du crédit immobilier ou travaux avec aides MaPrimeRénov jusqu'aux assurances professionnelles et à l'ingénierie patrimoniale, un interlocuteur unique pilote votre dossier.
+        </p>
+      </div>
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+        <div class="w-10 h-10 bg-amber-100 text-amber-800 rounded-lg flex items-center justify-center font-bold text-lg">03</div>
+        <h3 class="text-lg font-bold text-slate-950" data-i18n="pillar3_t">Expertise Transfrontalière</h3>
+        <p class="text-sm text-slate-600 leading-relaxed" data-i18n="pillar3_d">
+          Accompagnement trilingue (Français, Espagnol, Anglais) dédié aux familles internationales, non-résidents et impatriés entre la France, l'Europe et l'Amérique latine.
+        </p>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm space-y-6">
+      <h3 class="text-2xl font-extrabold text-slate-950" data-i18n="method_title">Notre Démarche d'Accompagnement</h3>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="border-l-2 border-blue-900 pl-4 space-y-1">
+          <p class="text-xs font-bold text-blue-900 uppercase" data-i18n="step1_lbl">Étape 1</p>
+          <h4 class="font-bold text-slate-900" data-i18n="step1_t">Audit &amp; Bilan</h4>
+          <p class="text-xs text-slate-600" data-i18n="step1_d">Analyse complète de vos contrats existants, de votre capacité d'emprunt et de votre situation fiscale.</p>
+        </div>
+        <div class="border-l-2 border-emerald-600 pl-4 space-y-1">
+          <p class="text-xs font-bold text-emerald-700 uppercase" data-i18n="step2_lbl">Étape 2</p>
+          <h4 class="font-bold text-slate-900" data-i18n="step2_t">Préconisations</h4>
+          <p class="text-xs text-slate-600" data-i18n="step2_d">Sélection des meilleures garanties, taux négociés et subventions mobilisables (MaPrimeRénov, CEE).</p>
+        </div>
+        <div class="border-l-2 border-amber-500 pl-4 space-y-1">
+          <p class="text-xs font-bold text-amber-600 uppercase" data-i18n="step3_lbl">Étape 3</p>
+          <h4 class="font-bold text-slate-900" data-i18n="step3_t">Montage &amp; Déploiement</h4>
+          <p class="text-xs text-slate-600" data-i18n="step3_d">Gestion intégrale des démarches administratives, résiliations Loi Lemoine et dépôt des dossiers d'aides.</p>
+        </div>
+        <div class="border-l-2 border-slate-800 pl-4 space-y-1">
+          <p class="text-xs font-bold text-slate-700 uppercase" data-i18n="step4_lbl">Étape 4</p>
+          <h4 class="font-bold text-slate-900" data-i18n="step4_t">Suivi Continu</h4>
+          <p class="text-xs text-slate-600" data-i18n="step4_d">Revue annuelle de vos couvertures et ajustements selon l'évolution de votre vie personnelle ou professionnelle.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== VUE 3 : NOS SERVICES ==================== -->
+  <section id="view-services" class="page-view hidden max-w-6xl mx-auto px-4 py-12 md:py-16 space-y-10">
+    <div class="max-w-3xl space-y-3">
+      <span class="inline-block bg-blue-100 text-blue-900 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full" data-i18n="srv_badge">
+        Solutions Complètes
+      </span>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-slate-950" data-i18n="srv_title">
+        Nos Domaines d'Intervention
+      </h2>
+      <p class="text-slate-600 text-base" data-i18n="srv_subtitle">
+        Un accompagnement global pour sécuriser votre foyer, développer votre activité professionnelle, financer vos travaux de rénovation énergétique et optimiser votre patrimoine.
+      </p>
+    </div>
+
+    <div class="space-y-8">
+      <!-- Pole 1 -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex flex-wrap justify-between items-center gap-4 border-b border-slate-100 pb-4">
+          <div>
+            <span class="text-xs font-bold text-emerald-700 uppercase tracking-wider" data-i18n="srv1_tag">Protection &amp; Courtage COA</span>
+            <h3 class="text-2xl font-extrabold text-slate-950 mt-1" data-i18n="srv1_title">Assurances Particuliers &amp; Professionnels</h3>
+          </div>
+          <button type="button" data-project="Assurances Particuliers / Professionnels" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-4 py-2.5 rounded-lg transition" data-i18n="srv_cta">
+            Demander un devis →
+          </button>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-slate-50 p-5 rounded-xl space-y-2">
+            <h4 class="font-bold text-blue-950 text-base" data-i18n="srv1_part_t">Pour les Particuliers</h4>
+            <ul class="space-y-2 text-sm text-slate-700">
+              <li data-i18n="srv1_part_1">• <strong>Assurance Emprunteur (Loi Lemoine) :</strong> substitution immédiate et économies jusqu'à 50 %.</li>
+              <li data-i18n="srv1_part_2">• <strong>Multirisque Habitation &amp; PNO :</strong> résidences principales, secondaires et propriétaires non-occupants.</li>
+              <li data-i18n="srv1_part_3">• <strong>Complémentaire Santé &amp; Prévoyance :</strong> formules familles, seniors et maintien de revenus.</li>
+              <li data-i18n="srv1_part_4">• <strong>Auto, Moto &amp; Protection Juridique :</strong> garanties sur-mesure au meilleur tarif.</li>
+            </ul>
+          </div>
+          <div class="bg-slate-50 p-5 rounded-xl space-y-2">
+            <h4 class="font-bold text-blue-950 text-base" data-i18n="srv1_pro_t">Pour les Professionnels &amp; Entreprises</h4>
+            <ul class="space-y-2 text-sm text-slate-700">
+              <li data-i18n="srv1_pro_1">• <strong>Responsabilité Civile Professionnelle (RC Pro) :</strong> couvre les dommages liés à votre activité.</li>
+              <li data-i18n="srv1_pro_2">• <strong>Assurance Décennale &amp; Dommages-Ouvrage :</strong> artisans, entreprises du BTP et maîtres d'œuvre.</li>
+              <li data-i18n="srv1_pro_3">• <strong>Multirisque Professionnelle &amp; Flotte Auto :</strong> locaux commerciaux, bureaux, matériel et véhicules.</li>
+              <li data-i18n="srv1_pro_4">• <strong>Prévoyance Dirigeant, Homme-Clé &amp; Mutuelle Collective :</strong> protection sociale TNS et salariés.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pole 2 -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex flex-wrap justify-between items-center gap-4 border-b border-slate-100 pb-4">
+          <div>
+            <span class="text-xs font-bold text-amber-600 uppercase tracking-wider" data-i18n="srv2_tag">Financement &amp; Rénovation Énergétique</span>
+            <h3 class="text-2xl font-extrabold text-slate-950 mt-1" data-i18n="srv2_title">Crédits Travaux &amp; Accompagnement MaPrimeRénov</h3>
+          </div>
+          <button type="button" data-project="Credit Travaux & Accompagnement MaPrimeRenov" class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold px-4 py-2.5 rounded-lg transition" data-i18n="srv2_cta">
+            Simuler mes aides &amp; travaux →
+          </button>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-amber-50/60 border border-amber-100 p-5 rounded-xl space-y-2">
+            <h4 class="font-bold text-slate-950 text-base" data-i18n="srv2_c1_t">Obtention de Crédits Travaux &amp; Immobilier</h4>
+            <p class="text-sm text-slate-700 leading-relaxed" data-i18n="srv2_c1_d">
+              En tant que courtier COBSP, nous négocions vos <strong>prêts travaux</strong>, crédits immobiliers, <strong>Éco-PTZ (Éco-Prêt à Taux Zéro)</strong> et solutions de financement du reste à charge pour vos projets d'agrandissement, d'aménagement ou de rénovation globale.
+            </p>
+          </div>
+          <div class="bg-emerald-50/60 border border-emerald-100 p-5 rounded-xl space-y-2">
+            <h4 class="font-bold text-slate-950 text-base" data-i18n="srv2_c2_t">Accompagnement Complet MaPrimeRénov &amp; CEE</h4>
+            <p class="text-sm text-slate-700 leading-relaxed" data-i18n="srv2_c2_d">
+              Nous vous assistons de A à Z pour maximiser et obtenir vos subventions : vérification d'éligibilité, montage administratif des dossiers <strong>MaPrimeRénov</strong> (parcours par geste ou rénovation d'ampleur), cumul avec les primes <strong>CEE (Certificats d'Économies d'Énergie)</strong> et coordination avec les artisans RGE.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pole 3 -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex flex-wrap justify-between items-center gap-4 border-b border-slate-100 pb-4">
+          <div>
+            <span class="text-xs font-bold text-blue-900 uppercase tracking-wider" data-i18n="srv3_tag">Gestion de Fortune &amp; Cross-Border</span>
+            <h3 class="text-2xl font-extrabold text-slate-950 mt-1" data-i18n="srv3_title">Ingénierie Patrimoniale, Dirigeants &amp; Expatriés</h3>
+          </div>
+          <button type="button" data-project="Bilan Patrimonial / Expatries / Dirigeant" class="bg-blue-950 hover:bg-blue-900 text-white text-xs font-bold px-4 py-2.5 rounded-lg transition" data-i18n="srv3_cta">
+            Planifier un bilan patrimonial →
+          </button>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-slate-50 p-5 rounded-xl space-y-2">
+            <h4 class="font-bold text-blue-950 text-base" data-i18n="srv3_c1_t">Fiscalité, Gestion d'Actifs &amp; Dirigeants</h4>
+            <ul class="space-y-2 text-sm text-slate-700">
+              <li data-i18n="srv3_c1_1">• <strong>Transmission &amp; Holding :</strong> Pacte Dutreil, apport-cession (150-0 B ter) et structuration familiale.</li>
+              <li data-i18n="srv3_c1_2">• <strong>Allocations en Architecture Ouverte :</strong> assurance-vie, PER, comptes-titres et Private Equity.</li>
+              <li data-i18n="srv3_c1_3">• <strong>Trésorerie d'Entreprise :</strong> placement sécurisé des excédents de trésorerie.</li>
+            </ul>
+          </div>
+          <div class="bg-slate-50 p-5 rounded-xl space-y-2">
+            <h4 class="font-bold text-blue-950 text-base" data-i18n="srv3_c2_t">Solutions Non-Résidents &amp; Expatriés</h4>
+            <ul class="space-y-2 text-sm text-slate-700">
+              <li data-i18n="srv3_c2_1">• <strong>Assurance-Vie Luxembourgeoise :</strong> portabilité fiscale internationale et triangle de sécurité.</li>
+              <li data-i18n="srv3_c2_2">• <strong>Gestion Multi-Devises :</strong> investissements en EUR, USD, GBP et CHF.</li>
+              <li data-i18n="srv3_c2_3">• <strong>Impatriation &amp; Retour en France :</strong> optimisation des conventions fiscales bilatérales.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== VUE 4 : VOTRE PROJET ==================== -->
+  <section id="view-projet" class="page-view hidden max-w-6xl mx-auto px-4 py-12 md:py-16">
+    <div class="grid lg:grid-cols-12 gap-10 items-start">
+      
+      <div class="lg:col-span-5 space-y-6">
+        <span class="inline-block bg-amber-100 text-amber-800 text-xs font-bold uppercase px-3 py-1 rounded-full" data-i18n="prj_badge">
+          Étude Personnalisée Sous 24h
+        </span>
+        <h2 class="text-3xl font-extrabold text-slate-950" data-i18n="prj_title">
+          Parlons de Votre Projet
+        </h2>
+        <p class="text-slate-600 text-sm leading-relaxed" data-i18n="prj_desc">
+          Que vous souhaitiez assurer votre activité professionnelle, rénover votre logement avec MaPrimeRénov, financer un bien immobilier ou structurer votre patrimoine, nos conseillers vous reçoivent sur rendez-vous ou en visioconférence.
+        </p>
+
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+          <h3 class="font-bold text-blue-950 text-base" data-i18n="office_title">Adresse du Cabinet</h3>
+          <div class="text-sm text-slate-700 space-y-1">
+            <p class="font-bold text-slate-950">Monarca Assurance &amp; Patrimoine</p>
+            <p>99 Avenue Achille Peretti</p>
+            <p>92200 Neuilly-sur-Seine, France</p>
+          </div>
+          <div class="pt-2 border-t border-slate-100 text-xs text-slate-500 space-y-1">
+            <p data-i18n="office_hours">Du lundi au vendredi : 9h00 – 19h00 (sur rendez-vous)</p>
+            <p>ORIAS n° 24006933 • Courtier COBSP &amp; COA</p>
+          </div>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=99+Avenue+Achille+Peretti+92200+Neuilly-sur-Seine" target="_blank" rel="noopener noreferrer"
+            class="inline-block text-xs font-bold text-blue-900 hover:underline" data-i18n="office_map">
+            Voir l'itinéraire sur Google Maps →
+          </a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 bg-white rounded-2xl shadow-xl border border-slate-200 p-6 md:p-8">
+        <div id="project-success" class="hidden bg-slate-900 text-white p-6 rounded-xl text-center space-y-2">
+          <p class="font-bold text-lg text-emerald-400" data-i18n="prj_success_t">Votre projet a bien été transmis !</p>
+          <p class="text-sm text-slate-300" data-i18n="prj_success_d">Un conseiller dédié du cabinet de Neuilly-sur-Seine prendra contact avec vous sous 24h ouvrées.</p>
+        </div>
+
+        <form id="project-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+          <input type="hidden" name="access_key" value="d78c7717-8d76-40f9-a88e-d283d474ec29" />
+          <input type="hidden" name="subject" id="project-subject" value="Nouvelle demande de projet - Monarca Assurance" />
+          <input type="hidden" name="from_name" value="Site Web Monarca Assurance & Patrimoine" />
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5" data-i18n="prj_type_lbl">Nature de votre projet *</label>
+            <select id="project-type" name="Type_Projet" required class="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm bg-white focus:outline-none focus:border-blue-900">
+              <option value="Assurances Particuliers / Professionnels" data-i18n="opt_ins">Assurances Particuliers &amp; Professionnels (RC Pro, Décennale, Santé, Habitation...)</option>
+              <option value="Credit Travaux & Accompagnement MaPrimeRenov" data-i18n="opt_reno">Crédits Travaux, Éco-PTZ &amp; Accompagnement MaPrimeRénov</option>
+              <option value="Pret Immobilier & Assurance Emprunteur (Lemoine)" data-i18n="opt_loan">Prêt Immobilier &amp; Assurance Emprunteur (Loi Lemoine)</option>
+              <option value="Bilan Patrimonial / Expatries / Dirigeant" data-i18n="opt_wealth">Ingénierie Patrimoniale, Dirigeants &amp; Expatriés</option>
+            </select>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5" data-i18n="prj_name_lbl">Nom &amp; Prénom *</label>
+              <input type="text" name="Nom_Complet" required data-i18n-placeholder="ph_name" placeholder="Nom &amp; Prénom"
+                class="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-blue-900" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5" data-i18n="prj_profile_lbl">Vous êtes *</label>
+              <select name="Profil_Client" class="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm bg-white focus:outline-none focus:border-blue-900">
+                <option value="Particulier" data-i18n="prof_part">Particulier</option>
+                <option value="Professionnel / Dirigeant" data-i18n="prof_pro">Professionnel / Dirigeant d'entreprise</option>
+                <option value="Expatrie / Non-resident" data-i18n="prof_exp">Expatrié / Non-résident</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5" data-i18n="prj_email_lbl">Email *</label>
+              <input type="email" name="Email" required data-i18n-placeholder="ph_email" placeholder="Email"
+                class="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-blue-900" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5" data-i18n="prj_phone_lbl">Téléphone *</label>
+              <input type="tel" name="Telephone" required data-i18n-placeholder="ph_phone" placeholder="Téléphone"
+                class="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-blue-900" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5" data-i18n="prj_msg_lbl">Détails de votre besoin</label>
+            <textarea name="Message_Projet" rows="4" data-i18n-placeholder="ph_msg" placeholder="Décrivez brièvement votre projet (type d assurance recherchée, montant des travaux envisagés, demande MaPrimeRénov, projet patrimonial...)"
+              class="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-blue-900"></textarea>
+          </div>
+
+          <label class="flex items-start gap-2 text-xs text-slate-500">
+            <input type="checkbox" name="Consentement_RGPD" value="Oui" required class="mt-0.5 accent-blue-900" />
+            <span data-i18n="rgpd_text">J’accepte que mes données soient traitées par Monarca Assurance pour réaliser mon étude financière et être recontacté, conformément à la politique de confidentialité (RGPD).</span>
+          </label>
+
+          <button id="project-submit-btn" type="submit"
+            class="w-full bg-blue-950 hover:bg-blue-900 text-white font-bold py-3.5 rounded-lg transition shadow-md" data-i18n="prj_submit">
+            Envoyer ma demande d'étude gratuite
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PIED DE PAGE -->
+  <footer class="bg-slate-950 text-slate-400 text-xs py-10 px-4 mt-16 border-t border-slate-800">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-12 gap-8">
+      <div class="md:col-span-8 space-y-3">
+        <p class="text-white font-semibold text-sm" data-i18n="footer_title">Monarca Assurance &amp; Patrimoine — Mentions réglementaires</p>
+        <p data-i18n="footer_orias">Courtier en opérations de banque et en services de paiement (COBSP) et courtier en assurance (COA), immatriculé à l'ORIAS sous le n° 24006933 (vérifiable sur www.orias.fr).</p>
+        <p data-i18n="footer_warn">Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager. Les résultats des simulateurs sont donnés à titre indicatif et non contractuel.</p>
+      </div>
+      <div class="md:col-span-4 space-y-2 md:text-right">
+        <p class="text-white font-semibold text-sm" data-i18n="footer_addr_title">Siège &amp; Cabinet</p>
+        <p>99 Avenue Achille Peretti</p>
+        <p>92200 Neuilly-sur-Seine, France</p>
+        <p class="text-amber-400/90 font-medium pt-1">« Un Mundo Sin Fronteras »</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var currentLang = "fr";
+      var currentTab = "pret";
+
+      var dict = {
+        fr: {
+          tagline: "& Patrimoine • Neuilly-sur-Seine",
+          nav_home: "Simulateur",
+          nav_about: "Qui Sommes-Nous ?",
+          nav_services: "Nos Services",
+          nav_project: "Votre Projet",
+          cta_header: "Étude gratuite",
+          badge_orias: "Courtier indépendant • ORIAS n° 24006933",
+          hero_title: 'Optimisez votre <span class="text-blue-900">prêt immobilier</span>, vos <span class="text-emerald-600">assurances</span> et vos <span class="text-amber-600">projets travaux</span>.',
+          hero_desc: "Simulez instantanément vos mensualités ou vos économies grâce à la loi Lemoine. Notre cabinet à Neuilly-sur-Seine vous accompagne également sur vos assurances particuliers & pros, vos crédits travaux et dossiers MaPrimeRénov.",
+          hero_b1: "Simulation immédiate, gratuite et sans engagement",
+          hero_b2: "Changement d'assurance emprunteur à tout moment (Loi Lemoine)",
+          hero_b3: "Financement travaux, aides MaPrimeRénov & assurances sur-mesure",
+          btn_discover_services: "Découvrir tous nos services →",
+          btn_discover_about: "Le cabinet",
+          sim_tab_loan: "Simulateur Prêt Immobilier",
+          sim_tab_ins: "Économie Assurance (Lemoine)",
+          sim_amount: "Montant à emprunter",
+          sim_duration: "Durée du prêt",
+          sim_rate: "Taux nominal estimé",
+          sim_monthly: "Mensualité estimée (hors ass.)",
+          sim_per_month: "/ mois",
+          sim_total_int: "Coût total des intérêts",
+          ins_capital: "Capital restant dû",
+          ins_rem_years: "Durée restante (ans)",
+          ins_age: "Votre âge",
+          ins_smoker: "Assuré fumeur (ou vapoteur)",
+          ins_savings: "Économie globale estimée",
+          ins_approx: "Soit environ",
+          lead_success_title: "Demande envoyée avec succès !",
+          lead_success_desc: "Votre simulation a été transmise à Monarca Assurance. Vous recevrez votre étude détaillée par email et serez recontacté sous 24h.",
+          lead_prompt: "Recevoir cette simulation détaillée + les meilleurs taux négociés :",
+          ph_name: "Nom & Prénom",
+          ph_email: "Email",
+          ph_phone: "Téléphone",
+          ph_msg: "Décrivez brièvement votre projet (type d'assurance recherchée, montant des travaux envisagés, demande MaPrimeRénov, projet patrimonial...)",
+          rgpd_text: "J’accepte que mes données soient traitées par Monarca Assurance pour réaliser mon étude financière et être recontacté, conformément à la politique de confidentialité (RGPD).",
+          lead_submit: "Recevoir mon étude personnalisée gratuite",
+          about_badge: "Cabinet Indépendant • Neuilly-sur-Seine",
+          about_title: "Monarca Assurance & Patrimoine — « Un Mundo Sin Fronteras »",
+          about_intro: 'Implanté au <strong class="text-white">99 Avenue Achille Peretti à Neuilly-sur-Seine (92200)</strong> et immatriculé à l’ORIAS (n° 24006933), notre cabinet indépendant accompagne les particuliers, les dirigeants d’entreprise et les expatriés dans la protection de leurs biens, le financement de leurs projets et la structuration de leur patrimoine.',
+          pillar1_t: "Indépendance Totale",
+          pillar1_d: "Libres de tout réseau bancaire ou compagnie unique, nous mettons en concurrence les meilleurs assureurs et établissements financiers en architecture ouverte.",
+          pillar2_t: "Approche 360° & Sur-Mesure",
+          pillar2_d: "Du crédit immobilier ou travaux avec aides MaPrimeRénov jusqu'aux assurances professionnelles et à l'ingénierie patrimoniale, un interlocuteur unique pilote votre dossier.",
+          pillar3_t: "Expertise Transfrontalière",
+          pillar3_d: "Accompagnement trilingue (Français, Espagnol, Anglais) dédié aux familles internationales, non-résidents et impatriés entre la France, l'Europe et l'Amérique latine.",
+          method_title: "Notre Démarche d'Accompagnement",
+          step1_lbl: "Étape 1", step1_t: "Audit & Bilan", step1_d: "Analyse complète de vos contrats existants, de votre capacité d'emprunt et de votre situation fiscale.",
+          step2_lbl: "Étape 2", step2_t: "Préconisations", step2_d: "Sélection des meilleures garanties, taux négociés et subventions mobilisables (MaPrimeRénov, CEE).",
+          step3_lbl: "Étape 3", step3_t: "Montage & Déploiement", step3_d: "Gestion intégrale des démarches administratives, résiliations Loi Lemoine et dépôt des dossiers d'aides.",
+          step4_lbl: "Étape 4", step4_t: "Suivi Continu", step4_d: "Revue annuelle de vos couvertures et ajustements selon l'évolution de votre vie personnelle ou professionnelle.",
+          srv_badge: "Solutions Complètes",
+          srv_title: "Nos Domaines d'Intervention",
+          srv_subtitle: "Un accompagnement global pour sécuriser votre foyer, développer votre activité professionnelle, financer vos travaux de rénovation énergétique et optimiser votre patrimoine.",
+          srv1_tag: "Protection & Courtage COA",
+          srv1_title: "Assurances Particuliers & Professionnels",
+          srv_cta: "Demander un devis →",
+          srv1_part_t: "Pour les Particuliers",
+          srv1_part_1: "• <strong>Assurance Emprunteur (Loi Lemoine) :</strong> substitution immédiate et économies jusqu'à 50 %.",
+          srv1_part_2: "• <strong>Multirisque Habitation & PNO :</strong> résidences principales, secondaires et propriétaires non-occupants.",
+          srv1_part_3: "• <strong>Complémentaire Santé & Prévoyance :</strong> formules familles, seniors et maintien de revenus.",
+          srv1_part_4: "• <strong>Auto, Moto & Protection Juridique :</strong> garanties sur-mesure au meilleur tarif.",
+          srv1_pro_t: "Pour les Professionnels & Entreprises",
+          srv1_pro_1: "• <strong>Responsabilité Civile Professionnelle (RC Pro) :</strong> couvre les dommages liés à votre activité.",
+          srv1_pro_2: "• <strong>Assurance Décennale & Dommages-Ouvrage :</strong> artisans, entreprises du BTP et maîtres d'œuvre.",
+          srv1_pro_3: "• <strong>Multirisque Professionnelle & Flotte Auto :</strong> locaux commerciaux, bureaux, matériel et véhicules.",
+          srv1_pro_4: "• <strong>Prévoyance Dirigeant, Homme-Clé & Mutuelle Collective :</strong> protection sociale TNS et salariés.",
+          srv2_tag: "Financement & Rénovation Énergétique",
+          srv2_title: "Crédits Travaux & Accompagnement MaPrimeRénov",
+          srv2_cta: "Simuler mes aides & travaux →",
+          srv2_c1_t: "Obtention de Crédits Travaux & Immobilier",
+          srv2_c1_d: "En tant que courtier COBSP, nous négocions vos <strong>prêts travaux</strong>, crédits immobiliers, <strong>Éco-PTZ (Éco-Prêt à Taux Zéro)</strong> et solutions de financement du reste à charge pour vos projets d'agrandissement, d'aménagement ou de rénovation globale.",
+          srv2_c2_t: "Accompagnement Complet MaPrimeRénov & CEE",
+          srv2_c2_d: "Nous vous assistons de A à Z pour maximiser et obtenir vos subventions : vérification d'éligibilité, montage administratif des dossiers <strong>MaPrimeRénov</strong> (parcours par geste ou rénovation d'ampleur), cumul avec les primes <strong>CEE (Certificats d'Économies d'Énergie)</strong> et coordination avec les artisans RGE.",
+          srv3_tag: "Gestion de Fortune & Cross-Border",
+          srv3_title: "Ingénierie Patrimoniale, Dirigeants & Expatriés",
+          srv3_cta: "Planifier un bilan patrimonial →",
+          srv3_c1_t: "Fiscalité, Gestion d'Actifs & Dirigeants",
+          srv3_c1_1: "• <strong>Transmission & Holding :</strong> Pacte Dutreil, apport-cession (150-0 B ter) et structuration familiale.",
+          srv3_c1_2: "• <strong>Allocations en Architecture Ouverte :</strong> assurance-vie, PER, comptes-titres et Private Equity.",
+          srv3_c1_3: "• <strong>Trésorerie d'Entreprise :</strong> placement sécurisé des excédents de trésorerie.",
+          srv3_c2_t: "Solutions Non-Résidents & Expatriés",
+          srv3_c2_1: "• <strong>Assurance-Vie Luxembourgeoise :</strong> portabilité fiscale internationale et triangle de sécurité.",
+          srv3_c2_2: "• <strong>Gestion Multi-Devises :</strong> investissements en EUR, USD, GBP et CHF.",
+          srv3_c2_3: "• <strong>Impatriation & Retour en France :</strong> optimisation des conventions fiscales bilatérales.",
+          prj_badge: "Étude Personnalisée Sous 24h",
+          prj_title: "Parlons de Votre Projet",
+          prj_desc: "Que vous souhaitiez assurer votre activité professionnelle, rénover votre logement avec MaPrimeRénov, financer un bien immobilier ou structurer votre patrimoine, nos conseillers vous reçoivent sur rendez-vous ou en visioconférence.",
+          office_title: "Adresse du Cabinet",
+          office_hours: "Du lundi au vendredi : 9h00 – 19h00 (sur rendez-vous)",
+          office_map: "Voir l'itinéraire sur Google Maps →",
+          prj_success_t: "Votre projet a bien été transmis !",
+          prj_success_d: "Un conseiller dédié du cabinet de Neuilly-sur-Seine prendra contact avec vous sous 24h ouvrées.",
+          prj_type_lbl: "Nature de votre projet *",
+          opt_ins: "Assurances Particuliers & Professionnels (RC Pro, Décennale, Santé, Habitation...)",
+          opt_reno: "Crédits Travaux, Éco-PTZ & Accompagnement MaPrimeRénov",
+          opt_loan: "Prêt Immobilier & Assurance Emprunteur (Loi Lemoine)",
+          opt_wealth: "Ingénierie Patrimoniale, Dirigeants & Expatriés",
+          prj_name_lbl: "Nom & Prénom *",
+          prj_profile_lbl: "Vous êtes *",
+          prof_part: "Particulier",
+          prof_pro: "Professionnel / Dirigeant d'entreprise",
+          prof_exp: "Expatrié / Non-résident",
+          prj_email_lbl: "Email *",
+          prj_phone_lbl: "Téléphone *",
+          prj_msg_lbl: "Détails de votre besoin",
+          prj_submit: "Envoyer ma demande d'étude gratuite",
+          footer_title: "Monarca Assurance & Patrimoine — Mentions réglementaires",
+          footer_orias: "Courtier en opérations de banque et en services de paiement (COBSP) et courtier en assurance (COA), immatriculé à l'ORIAS sous le n° 24006933 (vérifiable sur www.orias.fr).",
+          footer_warn: "Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager. Les résultats des simulateurs sont donnés à titre indicatif et non contractuel.",
+          footer_addr_title: "Siège & Cabinet",
+          years_unit: "ans"
+        },
+        es: {
+          tagline: "& Patrimonio • Neuilly-sur-Seine",
+          nav_home: "Simulador",
+          nav_about: "Quiénes Somos",
+          nav_services: "Nuestros Servicios",
+          nav_project: "Su Proyecto",
+          cta_header: "Estudio gratuito",
+          badge_orias: "Corredor independiente • ORIAS n° 24006933",
+          hero_title: 'Optimice su <span class="text-blue-900">préstamo hipotecario</span>, sus <span class="text-emerald-600">seguros</span> y sus <span class="text-amber-600">proyectos de reforma</span>.',
+          hero_desc: "Simule al instante sus cuotas mensuales o su ahorro con la Ley Lemoine. Nuestra firma en Neuilly-sur-Seine también le asesora en seguros particulares y profesionales, créditos de reforma y ayudas MaPrimeRénov.",
+          hero_b1: "Simulación inmediata, gratuita y sin compromiso",
+          hero_b2: "Cambio de seguro hipotecario en cualquier momento (Ley Lemoine)",
+          hero_b3: "Financiación de obras, ayudas MaPrimeRénov y seguros a medida",
+          btn_discover_services: "Descubrir todos nuestros servicios →",
+          btn_discover_about: "La firma",
+          sim_tab_loan: "Simulador Préstamo Hipotecario",
+          sim_tab_ins: "Ahorro Seguro (Ley Lemoine)",
+          sim_amount: "Importe a solicitar",
+          sim_duration: "Plazo del préstamo",
+          sim_rate: "Tipo nominal estimado",
+          sim_monthly: "Cuota mensual estimada (sin seg.)",
+          sim_per_month: "/ mes",
+          sim_total_int: "Coste total de intereses",
+          ins_capital: "Capital pendiente",
+          ins_rem_years: "Plazo restante (años)",
+          ins_age: "Su edad",
+          ins_smoker: "Asegurado fumador (o vapeador)",
+          ins_savings: "Ahorro global estimado",
+          ins_approx: "Aproximadamente",
+          lead_success_title: "¡Solicitud enviada con éxito!",
+          lead_success_desc: "Su simulación ha sido enviada a Monarca Assurance. Recibirá su estudio detallado por correo electrónico y le contactaremos en 24h.",
+          lead_prompt: "Recibir esta simulación detallada + los mejores tipos negociados:",
+          ph_name: "Nombre y Apellidos",
+          ph_email: "Correo electrónico",
+          ph_phone: "Teléfono",
+          ph_msg: "Describa brevemente su proyecto (tipo de seguro, importe de obras previstas, solicitud MaPrimeRénov, proyecto patrimonial...)",
+          rgpd_text: "Acepto que mis datos sean tratados por Monarca Assurance para realizar mi estudio financiero y ser contactado, conforme a la política de privacidad (RGPD).",
+          lead_submit: "Recibir mi estudio personalizado gratuito",
+          about_badge: "Firma Independiente • Neuilly-sur-Seine",
+          about_title: "Monarca Assurance & Patrimoine — « Un Mundo Sin Fronteras »",
+          about_intro: 'Ubicada en <strong class="text-white">99 Avenue Achille Peretti en Neuilly-sur-Seine (92200)</strong> e inscrita en ORIAS (n° 24006933), nuestra firma independiente asesora a particulares, empresarios y expatriados en la protección de sus bienes, financiación de proyectos y estructuración patrimonial.',
+          pillar1_t: "Independencia Total",
+          pillar1_d: "Libres de cualquier red bancaria o aseguradora única, comparamos las mejores entidades financieras y aseguradoras en arquitectura abierta.",
+          pillar2_t: "Enfoque 360° a Medida",
+          pillar2_d: "Desde créditos hipotecarios o reformas con ayudas MaPrimeRénov hasta seguros empresariales e ingeniería patrimonial, un único interlocutor gestiona su expediente.",
+          pillar3_t: "Experiencia Transfronteriza",
+          pillar3_d: "Asesoramiento trilingüe (Español, Francés, Inglés) dedicado a familias internacionales, no residentes e impatriados entre Francia, Europa y América Latina.",
+          method_title: "Nuestro Proceso de Asesoramiento",
+          step1_lbl: "Paso 1", step1_t: "Auditoría y Balance", step1_d: "Análisis completo de sus pólizas actuales, capacidad de endeudamiento y situación fiscal.",
+          step2_lbl: "Paso 2", step2_t: "Recomendaciones", step2_d: "Selección de las mejores coberturas, tipos negociados y subvenciones disponibles (MaPrimeRénov, CEE).",
+          step3_lbl: "Paso 3", step3_t: "Tramitación y Ejecución", step3_d: "Gestión integral de trámites administrativos, cancelaciones Ley Lemoine y presentación de expedientes de ayudas.",
+          step4_lbl: "Paso 4", step4_t: "Seguimiento Continuo", step4_d: "Revisión anual de sus coberturas y ajustes según la evolución de su vida personal o empresarial.",
+          srv_badge: "Soluciones Integrales",
+          srv_title: "Nuestras Áreas de Especialización",
+          srv_subtitle: "Acompañamiento integral para proteger su hogar, impulsar
